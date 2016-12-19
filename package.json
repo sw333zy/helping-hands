@@ -18,6 +18,17 @@
   "homepage": "https://github.com/sw333zy/helping-hands#readme",
   "dependencies": {
     "angular": "^1.6.0",
-    "angular-ui-router": "^0.3.2"
+    "angular-ui-router": "^0.3.2",
+    "grunt": "^1.0.1",
+    "grunt-cli": "^1.2.0",
+    "grunt-contrib-clean": "^1.0.0",
+    "grunt-contrib-concat": "^1.0.1",
+    "grunt-contrib-copy": "^1.0.0",
+    "grunt-contrib-jshint": "^1.1.0",
+    "grunt-contrib-watch": "^1.0.0",
+    "http-server": "^0.9.0"
+  },
+  "devDependencies": {
+    "grunt-contrib-sass": "^1.0.0"
   }
 }
