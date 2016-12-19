@@ -1,0 +1,23 @@
+{
+  "name": "helping-hands",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/sw333zy/helping-hands.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/sw333zy/helping-hands/issues"
+  },
+  "homepage": "https://github.com/sw333zy/helping-hands#readme",
+  "dependencies": {
+    "angular": "^1.6.0",
+    "angular-ui-router": "^0.3.2"
+  }
+}
