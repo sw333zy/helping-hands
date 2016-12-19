@@ -1,16 +1,29 @@
 <!DOCTYPE html>
-<html lang='en' ng-app='helping-hands'>
+<html lang='en' ng-app='helpingHands'>
   <head>
-    <meta charset="utf-8">
+    <meta charset='utf-8'>
     <title>Helping Hands</title>
-  </head>
-  <body>
-    <header>Helping Hands</header>
+    <meta name='description' content=''>
+        <meta name='author' content=''>
+        <meta name='viewport' content='width=device-width, initial-scale=1.0, minimum-scale=1.0, maximum-scale=1.0, user-scalable=no'>
+        <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
+        <link rel='stylesheet' href='css/styles.css' type='text/css'>
+
+    </head>
+    <body>
+      <header class='banner'>
+        <h1>Helping Hands</h1>
+        <nav class='navbar navbar-inverse' role="navigation">
+          <ul>
+            <li><a class='navtheme' ui-sref='home'>Home</a></li>
+          </ul>
+        </nav>
+      </header>
+    <main ui-view></main>
 
 
-
-    <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.5.6/angular.min.js"></script>
+    <script src='https://ajax.googleapis.com/ajax/libs/angularjs/1.5.6/angular.min.js'></script>
     <script src='https://cdnjs.cloudflare.com/ajax/libs/angular-ui-router/0.3.2/angular-ui-router.js'></script>
-    <script src='helping-hands.module.js'></script>
+    <script src='js/helping-hands.module.js'></script>
   </body>
 </html>
