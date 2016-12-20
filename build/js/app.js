@@ -13,9 +13,21 @@
       .state({
         name: 'home',
         url: '',
-        templateUrl: 'views/home.template.html'
+        templateUrl: 'views/home.template.html',
+        controller: 'AddressController',
+        controllerAs: 'AddressController'
 
-      });
+
+      })
+
+      .state({
+        name: 'addressMapView',
+        url: '/addressMapView/',
+        templateUrl: 'views/address-map-view.template.html',
+        controller: 'AddressMapViewController',
+        controllerAs: 'addressMapView'
+
+});
 
 
   }
@@ -25,15 +37,19 @@
   'use strict';
 
   angular.module('helpingHands')
-        .controller('AddressController', AddressController);
+    .controller('AddressController', AddressController);
 
-    AddressController.$inject = [ '$stateParams', '$state'];
+  AddressController.$inject = [ '$state'];
 
-        function AddressController() {
-            console.log('creating the controller');
-            this.address = {};
+    function AddressController($state) {
+      console.log('creating the controller');
+      this.addressToAdd = {};
 
+      this.addAddress = function addAddress(address) {
+        console.log('somethings working', address);
+        $state.go('addressMapView');
 
-        }
+      };
 
+    }
 }());

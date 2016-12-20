@@ -18,3 +18,9 @@ fieldset p {
   clear: both;
   padding: 5px;
 }
+[ng-cloak] {
+  display: none;
+}
+.ng-invalid.ng-touched {
+  border: 1px solid red;
+}

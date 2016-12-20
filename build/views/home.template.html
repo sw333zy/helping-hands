@@ -1,10 +1,13 @@
-<form>
+  <form novalidate class='addressInput' name='address' ng-submit='address.$valid && AddressController.addAddress(AddressController.addressToAdd)'>
   <fieldset>
     <legend>Please Input Address</legend>
-      <p><label class='field' for='Street Address'>Street Address</label><input type='text' name='Street Address' class='textboox-300'></p>
-      <p><label class='field' for='City'>City</label><input type='text' name='City' class='textboox-300'></p>
-      <p><label class='field' for='State'>State</label><input type='text' name='State' class='textboox-300'></p>
-      <p><label class='field' for='Zip Code'>Zip Code</label><input type='text' name='Zip Code' class='textboox-300'></p>
+      <section><label class='field' for='Street Address'>Street Address </label><input type='text' name='Street Address' class='textbox' ng-model='AddressController.addressToAdd.street'></section>
+      <section><label class='field' for='City'>City</label><input type='text' name='City' class='textbox' ng-model='AddressController.addressToAdd.city'></section>
+      <section><label class='field' for='State'>State </label><input type='text' name='State' class='textbox' ng-model='AddressController.addressToAdd.state'></section>
+      <section><label class='field' for='zip-code'>Zip Code</label><input type='text' name='zip' id='zip-code' class='textbox' required ng-model='AddressController.addressToAdd.zip'>
+        <p ng-show='!address.zip.$valid'>Please enter a Zip Code!</p>
+      </section>
       <input class='btn btn-info' type='submit' name='submit' value='Submit'>
   </fieldset>
+
 </form>

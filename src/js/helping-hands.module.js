@@ -13,9 +13,21 @@
       .state({
         name: 'home',
         url: '',
-        templateUrl: 'views/home.template.html'
+        templateUrl: 'views/home.template.html',
+        controller: 'AddressController',
+        controllerAs: 'AddressController'
 
-      });
+
+      })
+
+      .state({
+        name: 'addressMapView',
+        url: '/addressMapView/',
+        templateUrl: 'views/address-map-view.template.html',
+        controller: 'AddressMapViewController',
+        controllerAs: 'addressMapView'
+
+});
 
 
   }
