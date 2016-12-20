@@ -22,15 +22,38 @@
 
       .state({
         name: 'addressMapView',
-        url: '/addressMapView/',
+        url: '/addressMapView',
         templateUrl: 'views/address-map-view.template.html',
         controller: 'AddressMapViewController',
-        controllerAs: 'addressMapView'
+        controllerAs: 'addressMapView',
+        params: {
+          address: null
+        }
 
 });
 
 
   }
+}());
+
+(function() {
+  'use strict';
+
+  angular.module('helpingHands')
+    .controller('AddressMapViewController', AddressMapViewController);
+
+    AddressMapViewController.$inject = ['$stateParams'];
+
+    function AddressMapViewController($stateParams) {
+
+      console.log("AddressMapViewController", $stateParams.address);
+      this.goToAddress = {};
+
+
+
+    }
+
+
 }());
 
 (function() {
@@ -43,11 +66,12 @@
 
     function AddressController($state) {
       console.log('creating the controller');
+
       this.addressToAdd = {};
 
       this.addAddress = function addAddress(address) {
         console.log('somethings working', address);
-        $state.go('addressMapView');
+        $state.go('addressMapView', {address: address});
 
       };
 

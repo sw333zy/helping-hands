@@ -22,10 +22,13 @@
 
       .state({
         name: 'addressMapView',
-        url: '/addressMapView/',
+        url: '/addressMapView',
         templateUrl: 'views/address-map-view.template.html',
         controller: 'AddressMapViewController',
-        controllerAs: 'addressMapView'
+        controllerAs: 'addressMapView',
+        params: {
+          address: null
+        }
 
 });
 
