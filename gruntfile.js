@@ -104,5 +104,5 @@ module.exports = function(grunt) {
   grunt.loadNpmTasks('grunt-contrib-concat');
   grunt.loadNpmTasks('grunt-contrib-watch');
 
-  grunt.registerTask('default', [ 'clean', 'jshint', 'copy', 'concat' ]); //add back sass
+  grunt.registerTask('default', [ 'clean', 'jshint', 'copy', 'sass', 'concat' ]); //add back sass
 };
