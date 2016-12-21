@@ -80,7 +80,7 @@ module.exports = function(grunt) {
          },
          js : {
            files: ['src/js/**/*.js'],
-           tasks: ['jshint', 'concat']
+           tasks: ['concat']
          },
 
          sass: {
@@ -104,5 +104,5 @@ module.exports = function(grunt) {
   grunt.loadNpmTasks('grunt-contrib-concat');
   grunt.loadNpmTasks('grunt-contrib-watch');
 
-  grunt.registerTask('default', [ 'clean', 'jshint', 'copy', 'sass', 'concat' ]); //add back sass
+  grunt.registerTask('default', [ 'clean', 'copy', 'sass', 'concat' ]); //add back sass
 };

@@ -4,11 +4,12 @@
   angular.module('helpingHands')
     .controller('AddressMapViewController', AddressMapViewController);
 
-    AddressMapViewController.$inject = ['$stateParams'];
+    AddressMapViewController.$inject = ['$stateParams', 'CurrentAddressService'];
 
-    function AddressMapViewController($stateParams) {
+    function AddressMapViewController($stateParams, CurrentAddressService) {
 
       console.log("AddressMapViewController", $stateParams.address);
+      CurrentAddressService.addAddress($stateParams.address);
       this.goToAddress = {};
 
 
