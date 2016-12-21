@@ -1,17 +1,1 @@
-<title>A simple map</title>
-<meta name='viewport' content='initial-scale=1,maximum-scale=1,user-scalable=no' />
-<script src='https://api.mapbox.com/mapbox.js/v3.0.1/mapbox.js'></script>
-<link href='https://api.mapbox.com/mapbox.js/v3.0.1/mapbox.css' rel='stylesheet' />
-<style>
-  body { margin:0; padding:0; }
-  #map { position:absolute; top:0; bottom:0; width:100%; }
-</style>
-</head>
-<body>
-<div id='map'></div>
-<script>
-L.mapbox.accessToken = 'pk.eyJ1Ijoic3czMzN6eSIsImEiOiJjaXdzMnluaXUxM3hwMnRzN3I4cHl2bnBnIn0.MhLpogI8pC6zp8qUBMID0w';
-var map = L.mapbox.map('map', 'mapbox.streets')
-    .setView([40, -74.50], 9);
-</script>
-</body>
+<section mapbox class='main-map'></section>
