@@ -11,18 +11,20 @@
       console.log("AddressMapViewController", $stateParams.address);
       CurrentAddressService.addAddress($stateParams.address);
       this.goToAddress = {};
-      this.Dcdata = function DcData(){
-        console.log(DcOpenDataService.DcData());
-        DcOpenDataService.DcData()
-        .then(function success(data){
-          console.log(data);
-        })
-        .catch(function fail(xhr){
-          console.log(xhr);
-        });
-        this.Dcdata();
 
+      this.getServices = function getServices(){
+        console.log('trying to get DC service data');
+
+        DcOpenDataService.getServices()
+          .then(function success(data){
+            console.log('we have DC services data', data);
+          })
+          .catch(function fail(err){
+            console.log('the DC services data call failed', err);
+          });
       };
+
+      this.getServices();
   }
 
 }());

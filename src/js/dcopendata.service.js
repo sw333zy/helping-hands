@@ -10,12 +10,16 @@
       console.log('dc open data service');
 
       return {
-        DcData: DcData
+        getServices: getServices
       };
 
-      function DcData(){
+      /**
+       * [getServices description]
+       * @return {Promise} [description]
+       */
+      function getServices(){
         return $http({
-            url: 'http://opendata.dc.gov/datasets/47be87a68e7a4376a3bdbe15d85de398_6.geojson', //need query and api key
+            url: 'http://opendata.dc.gov/datasets/87c5e68942304363a4578b30853f385d_25.geojson',
             method: 'GET'
         })
         .then(function onlyReturnData(data) {
