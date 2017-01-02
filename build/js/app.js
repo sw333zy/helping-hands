@@ -187,11 +187,34 @@
           .setView([38.9, -77], 12)
           .addLayer(L.mapbox.tileLayer('mapbox.streets'));
 
+
         DcOpenDataService.getServices()
         .then(function handleSuccess(data){
-          console.log(data, 'dc data from call');
+          console.log(data, 'dc data from caller');
 
-          map.featureLayer.setGeoJSON(data);
+            map.featureLayer.setGeoJSON(data);
+            map.featureLayer.eachLayer(function (entity) {
+
+              entity.bindPopup(
+                'Name:' +
+                ' ' +
+                entity.feature.properties.NAME +
+                '<br\> Address:' +
+                ' ' +
+                entity.feature.properties.ADDRESS +
+                '<br\> Phone:' +
+                ' ' +
+                entity.feature.properties.PH_NUM +
+                '<br\> Proprietor:' +
+                ' ' +
+                entity.feature.properties.OWNERSHIP
+              );
+              // entity.on('click', function(){
+              //   this.openPopup();
+              // });
+            });
+
+
 
         })
         .catch(function handleError(err){
@@ -199,8 +222,13 @@
         });
 
 
+
+
       }
+
+
     };
+
   }
 
 }());
