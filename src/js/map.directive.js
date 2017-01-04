@@ -22,7 +22,7 @@
           console.log(data, 'dc data from caller');
 
 
-            map.featureLayer.setGeoJSON(data.parentResources);
+            map.featureLayer.setGeoJSON(data.dcFedResources);
 
             // this won't work... we need to figure out how to add multiple layers!
             // map.featureLayer.setGeoJSON(data.parentResources);
@@ -38,10 +38,13 @@
                 entity.feature.properties.ADDRESS +
                 '<br\> Phone:' +
                 ' ' +
-                entity.feature.properties.PH_NUM +
-                '<br\> Proprietor:' +
+                entity.feature.properties.PHONE +
+                '<br\> Website:' +
                 ' ' +
-                entity.feature.properties.OWNERSHIP
+                entity.feature.properties.WEB_URL +
+                '<br\> Description:' +
+                ' ' + entity.feature.properties.DESCRIPTION
+
               );
 
             });
