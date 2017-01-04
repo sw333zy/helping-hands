@@ -160,33 +160,37 @@
         })
         .then(function onlyReturnData(response) {
             console.log(response);
-            var keyWordFilter = [];
-            var frequency = {};
 
             var humanServicesData = {
               shelters: { type: 'FeatureCollection', features: [] },
-              clinics: { type: 'FeatureCollection', features: [] }
+              parentResources: { type: 'FeatureCollection', features: [] }
             };
 
             humanServicesData.shelters.features = response.data.features.filter(function filterShelter(entity){
               if (!entity.properties.KEYWORD) {
                 return false;
               }
-              var keykey = entity.properties.KEYWORD.split('\-/s+');
-              for (var i = 0; i < keykey.length; i++) {
-                frequency[keykey[i]] = (frequency[keykey[i]] || 0) + 1;
-              }
-              // console.log('word freq', frequency);
-              // keyWordFilter.push(entity.properties.KEYWORD);
-              // console.log('keyWords', keyWordFilter);
-              // 
-              return entity.properties.KEYWORD.toLowerCase().indexOf('shelter') > -1;
+              return entity.properties.KEYWORD.toLowerCase().indexOf('shelter', 'homeless') > -1;
             });
 
-            humanServicesData.clinics.features = []; // do the same filtering here!
-            console.log('keyWords', keyWordFilter);
+            humanServicesData.parentResources.features = response.data.features.filter(function filterParentResources(entity){
+              if (!entity.properties.KEYWORD) {
+                return false;
+              }
+              var shouldInclude = false;
+              
+              if (entity.properties.KEYWORD.toLowerCase().indexOf('child development') > -1) {
+                shouldInclude = true;
+              }
 
-            console.log('word freq', frequency);
+              // , 'early intervention',
+              // 'education-early childhood','childcare-infants',
+              // 'after school programs', 'teen parents/pregnancy',
+              // 'parenting-education', 'parenting-services',
+              // 'parenting-skills' ) > -1;
+
+              return shouldInclude
+            });
 
             return humanServicesData;
         });
@@ -221,6 +225,9 @@
 
 
             map.featureLayer.setGeoJSON(data.shelters);
+
+            // this won't work... we need to figure out how to add multiple layers!
+            // map.featureLayer.setGeoJSON(data.parentResources);
 
             map.featureLayer.eachLayer(function (entity) {
 

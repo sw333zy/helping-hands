@@ -24,6 +24,9 @@
 
             map.featureLayer.setGeoJSON(data.shelters);
 
+            // this won't work... we need to figure out how to add multiple layers!
+            // map.featureLayer.setGeoJSON(data.parentResources);
+
             map.featureLayer.eachLayer(function (entity) {
 
               entity.bindPopup(
