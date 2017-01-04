@@ -11,8 +11,8 @@
 
     $stateProvider
       .state({
-        name: 'home',
-        url: '',
+        name: 'home', //switch back to home
+        url: '', //switch back to blank
         templateUrl: 'views/home.template.html',
         controller: 'AddressController',
         controllerAs: 'AddressController'
@@ -21,8 +21,8 @@
       })
 
       .state({
-        name: 'addressMapView',
-        url: '/addressMapView',
+        name: 'addressMapView', //switch back to addressMapView
+        url: '/addressMapView', //switch back to /adress
         templateUrl: 'views/address-map-view.template.html',
         controller: 'AddressMapViewController',
         controllerAs: 'addressMapView',
@@ -42,18 +42,18 @@
   angular.module('helpingHands')
     .controller('AddressMapViewController', AddressMapViewController);
 
-    AddressMapViewController.$inject = ['$stateParams', 'CurrentAddressService', 'DcOpenDataService'];
+    AddressMapViewController.$inject = ['$stateParams', 'CurrentAddressService', 'DcHumanService'];
 
-    function AddressMapViewController($stateParams, CurrentAddressService, DcOpenDataService) {
+    function AddressMapViewController($stateParams, CurrentAddressService, DcHumanService) {
 
       console.log("AddressMapViewController", $stateParams.address);
       CurrentAddressService.addAddress($stateParams.address);
       this.goToAddress = {};
 
-      this.getServices = function getServices(){
+      this.getHumanServices = function getHumanServices(){
         console.log('trying to get DC service data');
 
-        DcOpenDataService.getServices()
+        DcHumanService.getHumanServices()
           .then(function success(data){
             console.log('we have DC services data', data);
           })
@@ -62,7 +62,7 @@
           });
       };
 
-      this.getServices();
+      this.getHumanServices();
   }
 
 }());
@@ -125,7 +125,7 @@
                 method: 'GET'
             })
             .then(function onlyReturnData(response) {
-                console.log(response);
+                console.log('data from current address', response);
 
                 return response.data;
             });
@@ -138,30 +138,57 @@
   'use strict';
 
   angular.module('helpingHands')
-    .factory('DcOpenDataService', DcOpenDataService);
+    .factory('DcHumanService', DcHumanService);
 
-    DcOpenDataService.$inject = ['$http'];
+    DcHumanService.$inject = ['$http'];
 
-    function DcOpenDataService($http) {
+    function DcHumanService($http) {
       console.log('dc open data service');
 
       return {
-        getServices: getServices
+        getHumanServices: getHumanServices
       };
 
       /**
-       * [getServices description]
+       * [getHumanServices description]
        * @return {Promise} [description]
        */
-      function getServices(){
+      function getHumanServices(){
         return $http({
-            url: 'http://opendata.dc.gov/datasets/87c5e68942304363a4578b30853f385d_25.geojson',
+            url: 'http://opendata.dc.gov/datasets/2867206451704e84b5480af8e3c314be_8.geojson',
             method: 'GET'
         })
-        .then(function onlyReturnData(data) {
-            console.log(data);
+        .then(function onlyReturnData(response) {
+            console.log(response);
+            var keyWordFilter = [];
+            var frequency = {};
 
-            return data.data;
+            var humanServicesData = {
+              shelters: { type: 'FeatureCollection', features: [] },
+              clinics: { type: 'FeatureCollection', features: [] }
+            };
+
+            humanServicesData.shelters.features = response.data.features.filter(function filterShelter(entity){
+              if (!entity.properties.KEYWORD) {
+                return false;
+              }
+              var keykey = entity.properties.KEYWORD.split('\-/s+');
+              for (var i = 0; i < keykey.length; i++) {
+                frequency[keykey[i]] = (frequency[keykey[i]] || 0) + 1;
+              }
+              // console.log('word freq', frequency);
+              // keyWordFilter.push(entity.properties.KEYWORD);
+              // console.log('keyWords', keyWordFilter);
+              // 
+              return entity.properties.KEYWORD.toLowerCase().indexOf('shelter') > -1;
+            });
+
+            humanServicesData.clinics.features = []; // do the same filtering here!
+            console.log('keyWords', keyWordFilter);
+
+            console.log('word freq', frequency);
+
+            return humanServicesData;
         });
 
       }
@@ -175,9 +202,9 @@
   angular.module('helpingHands')
   .directive('mapbox', MapBox);
 
-  MapBox.$inject = ['DcOpenDataService'];
+  MapBox.$inject = ['DcHumanService'];
 
-  function MapBox(DcOpenDataService) {
+  function MapBox(DcHumanService) {
     return {
       restrict: 'EA',
       link: function (scope, element) {
@@ -188,11 +215,13 @@
           .addLayer(L.mapbox.tileLayer('mapbox.streets'));
 
 
-        DcOpenDataService.getServices()
+        DcHumanService.getHumanServices()
         .then(function handleSuccess(data){
           console.log(data, 'dc data from caller');
 
-            map.featureLayer.setGeoJSON(data);
+
+            map.featureLayer.setGeoJSON(data.shelters);
+
             map.featureLayer.eachLayer(function (entity) {
 
               entity.bindPopup(
@@ -209,12 +238,8 @@
                 ' ' +
                 entity.feature.properties.OWNERSHIP
               );
-              // entity.on('click', function(){
-              //   this.openPopup();
-              // });
+
             });
-
-
 
         })
         .catch(function handleError(err){
@@ -232,3 +257,11 @@
   }
 
 }());
+// map.featureLayer.on('ready', function(e) {
+//
+//   var clusterGroup = new L.MarkerClusterGroup();
+//   e.target.eachLayer(function(layer) {
+//     clusterGroup.addLayer(layer);
+//   });
+//   map.addLayer(clusterGroup);
+// });

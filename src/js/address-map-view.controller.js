@@ -4,18 +4,18 @@
   angular.module('helpingHands')
     .controller('AddressMapViewController', AddressMapViewController);
 
-    AddressMapViewController.$inject = ['$stateParams', 'CurrentAddressService', 'DcOpenDataService'];
+    AddressMapViewController.$inject = ['$stateParams', 'CurrentAddressService', 'DcHumanService'];
 
-    function AddressMapViewController($stateParams, CurrentAddressService, DcOpenDataService) {
+    function AddressMapViewController($stateParams, CurrentAddressService, DcHumanService) {
 
       console.log("AddressMapViewController", $stateParams.address);
       CurrentAddressService.addAddress($stateParams.address);
       this.goToAddress = {};
 
-      this.getServices = function getServices(){
+      this.getHumanServices = function getHumanServices(){
         console.log('trying to get DC service data');
 
-        DcOpenDataService.getServices()
+        DcHumanService.getHumanServices()
           .then(function success(data){
             console.log('we have DC services data', data);
           })
@@ -24,7 +24,7 @@
           });
       };
 
-      this.getServices();
+      this.getHumanServices();
   }
 
 }());

@@ -11,8 +11,8 @@
 
     $stateProvider
       .state({
-        name: 'home',
-        url: '',
+        name: 'home', //switch back to home
+        url: '', //switch back to blank
         templateUrl: 'views/home.template.html',
         controller: 'AddressController',
         controllerAs: 'AddressController'
@@ -21,8 +21,8 @@
       })
 
       .state({
-        name: 'addressMapView',
-        url: '/addressMapView',
+        name: 'addressMapView', //switch back to addressMapView
+        url: '/addressMapView', //switch back to /adress
         templateUrl: 'views/address-map-view.template.html',
         controller: 'AddressMapViewController',
         controllerAs: 'addressMapView',

@@ -33,7 +33,7 @@
                 method: 'GET'
             })
             .then(function onlyReturnData(response) {
-                console.log(response);
+                console.log('data from current address', response);
 
                 return response.data;
             });

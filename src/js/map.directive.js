@@ -4,9 +4,9 @@
   angular.module('helpingHands')
   .directive('mapbox', MapBox);
 
-  MapBox.$inject = ['DcOpenDataService'];
+  MapBox.$inject = ['DcHumanService'];
 
-  function MapBox(DcOpenDataService) {
+  function MapBox(DcHumanService) {
     return {
       restrict: 'EA',
       link: function (scope, element) {
@@ -17,11 +17,13 @@
           .addLayer(L.mapbox.tileLayer('mapbox.streets'));
 
 
-        DcOpenDataService.getServices()
+        DcHumanService.getHumanServices()
         .then(function handleSuccess(data){
           console.log(data, 'dc data from caller');
 
-            map.featureLayer.setGeoJSON(data);
+
+            map.featureLayer.setGeoJSON(data.shelters);
+
             map.featureLayer.eachLayer(function (entity) {
 
               entity.bindPopup(
@@ -38,12 +40,8 @@
                 ' ' +
                 entity.feature.properties.OWNERSHIP
               );
-              // entity.on('click', function(){
-              //   this.openPopup();
-              // });
+
             });
-
-
 
         })
         .catch(function handleError(err){
@@ -61,3 +59,11 @@
   }
 
 }());
+// map.featureLayer.on('ready', function(e) {
+//
+//   var clusterGroup = new L.MarkerClusterGroup();
+//   e.target.eachLayer(function(layer) {
+//     clusterGroup.addLayer(layer);
+//   });
+//   map.addLayer(clusterGroup);
+// });

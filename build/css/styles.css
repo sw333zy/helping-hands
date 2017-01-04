@@ -34,4 +34,9 @@ body {
   bottom: 0;
   width: 100%; }
 
+.jumbotron {
+  background-image: url("../img/HelpingHand.jpg");
+  background-size: cover;
+  height: 100%; }
+
 /*# sourceMappingURL=styles.css.map */
