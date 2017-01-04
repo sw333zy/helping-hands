@@ -12,9 +12,9 @@
       link: function (scope, element) {
         L.mapbox.accessToken = 'pk.eyJ1Ijoic3czMzN6eSIsImEiOiJjaXdzMnluaXUxM3hwMnRzN3I4cHl2bnBnIn0.MhLpogI8pC6zp8qUBMID0w';
 
-        var map = L.mapbox.map(element[0], 'mapbox.streets')
+        var map = L.mapbox.map(element[0], 'mapbox.run-bike-hike')
           .setView([38.9, -77], 12)
-          .addLayer(L.mapbox.tileLayer('mapbox.streets'));
+          .addLayer(L.mapbox.tileLayer('mapbox.run-bike-hike'));
 
 
         DcHumanService.getHumanServices()
@@ -22,7 +22,7 @@
           console.log(data, 'dc data from caller');
 
 
-            map.featureLayer.setGeoJSON(data.shelters);
+            map.featureLayer.setGeoJSON(data.parentResources);
 
             // this won't work... we need to figure out how to add multiple layers!
             // map.featureLayer.setGeoJSON(data.parentResources);

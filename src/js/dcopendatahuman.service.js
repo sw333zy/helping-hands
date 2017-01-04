@@ -34,7 +34,7 @@
               if (!entity.properties.KEYWORD) {
                 return false;
               }
-              return entity.properties.KEYWORD.toLowerCase().indexOf('shelter', 'homeless') > -1;
+              return entity.properties.KEYWORD.toLowerCase().indexOf('shelter') > -1;
             });
 
             humanServicesData.parentResources.features = response.data.features.filter(function filterParentResources(entity){
@@ -42,18 +42,38 @@
                 return false;
               }
               var shouldInclude = false;
-              
+
               if (entity.properties.KEYWORD.toLowerCase().indexOf('child development') > -1) {
                 shouldInclude = true;
               }
-
-              // , 'early intervention',
-              // 'education-early childhood','childcare-infants',
-              // 'after school programs', 'teen parents/pregnancy',
-              // 'parenting-education', 'parenting-services',
-              // 'parenting-skills' ) > -1;
-
-              return shouldInclude
+              if (entity.properties.KEYWORD.toLowerCase().indexOf('early intervention') > -1) {
+                shouldInclude = true;
+              }
+              if (entity.properties.KEYWORD.toLowerCase().indexOf('education-early childhood') > -1) {
+                shouldInclude = true;
+              }
+              if (entity.properties.KEYWORD.toLowerCase().indexOf('childcare-infants') > -1) {
+                shouldInclude = true;
+              }
+              if (entity.properties.KEYWORD.toLowerCase().indexOf('after school programs') > -1) {
+                shouldInclude = true;
+              }
+              if (entity.properties.KEYWORD.toLowerCase().indexOf('teen parents/pregnancy') > -1) {
+                shouldInclude = true;
+              }
+              if (entity.properties.KEYWORD.toLowerCase().indexOf('parenting-education') > -1) {
+                shouldInclude = true;
+              }
+              if (entity.properties.KEYWORD.toLowerCase().indexOf('parenting-services') > -1) {
+                shouldInclude = true;
+              }
+              if (entity.properties.KEYWORD.toLowerCase().indexOf('parenting-skills') > -1) {
+                shouldInclude = true;
+              }
+              if (entity.properties.KEYWORD.toLowerCase().indexOf('wic') > -1) {
+                shouldInclude = true;
+              }
+              return shouldInclude;
             });
 
             return humanServicesData;

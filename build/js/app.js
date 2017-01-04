@@ -170,7 +170,7 @@
               if (!entity.properties.KEYWORD) {
                 return false;
               }
-              return entity.properties.KEYWORD.toLowerCase().indexOf('shelter', 'homeless') > -1;
+              return entity.properties.KEYWORD.toLowerCase().indexOf('shelter') > -1;
             });
 
             humanServicesData.parentResources.features = response.data.features.filter(function filterParentResources(entity){
@@ -178,18 +178,38 @@
                 return false;
               }
               var shouldInclude = false;
-              
+
               if (entity.properties.KEYWORD.toLowerCase().indexOf('child development') > -1) {
                 shouldInclude = true;
               }
-
-              // , 'early intervention',
-              // 'education-early childhood','childcare-infants',
-              // 'after school programs', 'teen parents/pregnancy',
-              // 'parenting-education', 'parenting-services',
-              // 'parenting-skills' ) > -1;
-
-              return shouldInclude
+              if (entity.properties.KEYWORD.toLowerCase().indexOf('early intervention') > -1) {
+                shouldInclude = true;
+              }
+              if (entity.properties.KEYWORD.toLowerCase().indexOf('education-early childhood') > -1) {
+                shouldInclude = true;
+              }
+              if (entity.properties.KEYWORD.toLowerCase().indexOf('childcare-infants') > -1) {
+                shouldInclude = true;
+              }
+              if (entity.properties.KEYWORD.toLowerCase().indexOf('after school programs') > -1) {
+                shouldInclude = true;
+              }
+              if (entity.properties.KEYWORD.toLowerCase().indexOf('teen parents/pregnancy') > -1) {
+                shouldInclude = true;
+              }
+              if (entity.properties.KEYWORD.toLowerCase().indexOf('parenting-education') > -1) {
+                shouldInclude = true;
+              }
+              if (entity.properties.KEYWORD.toLowerCase().indexOf('parenting-services') > -1) {
+                shouldInclude = true;
+              }
+              if (entity.properties.KEYWORD.toLowerCase().indexOf('parenting-skills') > -1) {
+                shouldInclude = true;
+              }
+              if (entity.properties.KEYWORD.toLowerCase().indexOf('wic') > -1) {
+                shouldInclude = true;
+              }
+              return shouldInclude;
             });
 
             return humanServicesData;
@@ -214,9 +234,9 @@
       link: function (scope, element) {
         L.mapbox.accessToken = 'pk.eyJ1Ijoic3czMzN6eSIsImEiOiJjaXdzMnluaXUxM3hwMnRzN3I4cHl2bnBnIn0.MhLpogI8pC6zp8qUBMID0w';
 
-        var map = L.mapbox.map(element[0], 'mapbox.streets')
+        var map = L.mapbox.map(element[0], 'mapbox.run-bike-hike')
           .setView([38.9, -77], 12)
-          .addLayer(L.mapbox.tileLayer('mapbox.streets'));
+          .addLayer(L.mapbox.tileLayer('mapbox.run-bike-hike'));
 
 
         DcHumanService.getHumanServices()
@@ -224,7 +244,7 @@
           console.log(data, 'dc data from caller');
 
 
-            map.featureLayer.setGeoJSON(data.shelters);
+            map.featureLayer.setGeoJSON(data.parentResources);
 
             // this won't work... we need to figure out how to add multiple layers!
             // map.featureLayer.setGeoJSON(data.parentResources);
