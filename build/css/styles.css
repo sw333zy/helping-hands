@@ -30,9 +30,13 @@ body {
 
 .main-map {
   position: absolute;
-  top: 0;
+  top: 500px;
   bottom: 0;
-  width: 100%; }
+  width: 100%;
+  z-index: 99; }
+
+.toggle {
+  z-index: 999; }
 
 .jumbotron {
   background-image: url("../img/HelpingHand.jpg");

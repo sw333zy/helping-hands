@@ -23,9 +23,9 @@
       .state({
         name: 'addressMapView', //switch back to addressMapView
         url: '/addressMapView', //switch back to /adress
-        templateUrl: 'views/address-map-view.template.html',
-        controller: 'AddressMapViewController',
-        controllerAs: 'addressMapView',
+        templateUrl: 'views/map-view.template.html',
+        controller: 'MapViewController',
+        controllerAs: 'mapView',
         params: {
           address: null
         }
