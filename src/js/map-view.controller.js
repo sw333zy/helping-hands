@@ -14,10 +14,12 @@
 
       //toggle filter for Senior Resources
       this.seniorsToggle = false;
+      this.parentsToggle = false;
 
       this.toggle = function toggle() {
       console.log('do i work');
       this.seniorsToggle = !this.seniorsToggle;
+      this.parentsToggle = !this.parentsToggle;
       };
 
       //Getting data

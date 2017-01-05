@@ -10,16 +10,17 @@
     return {
       restrict: 'EA',
       scope: {
-        showSeniorResources: '=seniors'
+        showSeniorResources: '=seniors',
+        showParentResources: '=parents'
       },
-      link: seniorMap
+      link: toggleMap
     };
 
 
 
     //Senior toggle function
 
-      function seniorMap(scope, element) {
+      function toggleMap(scope, element) {
         var map;
         console.log("Starting watch");
         scope.$watch('showSeniorResources', function toggleSeniorLayer(newValue, oldValue){
@@ -32,6 +33,17 @@
             map.featureLayer.clearLayers(geojson);
           }
         });
+        scope.$watch('showParentResources', function toggleParentLayer(newValue, oldValue){
+          console.log("triggered watch", newValue, oldValue);
+          var geojson = L.mapbox.tileLayer('mapbox.run-bike-hike');
+          if(newValue){
+            console.log(newValue, 'plotting parents');
+            getParentResources();
+          } else{
+            map.featureLayer.clearLayers(geojson);
+          }
+        });
+
 
         //Setting Map
 
@@ -87,6 +99,7 @@
 
 
           map.featureLayer.setGeoJSON(data.parentResources);
+          
 
           // this won't work... we need to figure out how to add multiple layers!
           // map.featureLayer.setGeoJSON(data.parentResources);
@@ -119,7 +132,7 @@
           console.log(err);
         });
       }
-getParentResources();
+
   }
 
 }
