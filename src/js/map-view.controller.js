@@ -15,9 +15,9 @@
       this.seniorsToggle = false;
       this.parentsToggle = false;
 
-      this.showGroup = function showGroup(group) {
-        console.log('group is', group);
-      }
+      // this.showGroup = function showGroup(group) {
+      //   console.log('group is', group);
+      // };
 
       this.toggle = function toggle(toggler) {
         // if (toggler === 'seniors') {
@@ -25,9 +25,13 @@
         // } else if (toggler === 'parents') {
         //   this.parentsToggle = !this.parentsToggle;
         // }
+        this.seniorsToggle = false;
+        this.parentsToggle = false;
+
         var togglerBuild = toggler + 'Toggle';
         console.log(togglerBuild);
         this[togglerBuild] = !this[togglerBuild];
+        
       };
 
       //Getting data

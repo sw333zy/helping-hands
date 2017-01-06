@@ -123,7 +123,7 @@
         .then(function onlyReturnData(response) {
 
             var humanServicesData = {
-              seniors: { type: 'FeatureCollection', features: [] },
+              seniors: { type: 'FeatureCollection', features: []},
               parentResources: { type: 'FeatureCollection', features: [] },
               healthResources: { type: 'FeatureCollection', features: [] },
               fhg_FinacialResources: { type: 'FeatureCollection', features: [] },
@@ -134,6 +134,7 @@
               infoReferralLegal: { type: 'FeatureCollection', features: [] },
               irResources: { type: 'FeatureCollection', features: [] },
               dcFedResources: { type: 'FeatureCollection', features: [] }
+              //features.properties['marker-symbol'] = 'car', features.properties['marker-size'] = 'small', features.properties['marker-symbol'] = '#ff4400'
 
             };
 
@@ -438,9 +439,9 @@
       this.seniorsToggle = false;
       this.parentsToggle = false;
 
-      this.showGroup = function showGroup(group) {
-        console.log('group is', group);
-      }
+      // this.showGroup = function showGroup(group) {
+      //   console.log('group is', group);
+      // };
 
       this.toggle = function toggle(toggler) {
         // if (toggler === 'seniors') {
@@ -448,9 +449,13 @@
         // } else if (toggler === 'parents') {
         //   this.parentsToggle = !this.parentsToggle;
         // }
+        this.seniorsToggle = false;
+        this.parentsToggle = false;
+
         var togglerBuild = toggler + 'Toggle';
         console.log(togglerBuild);
         this[togglerBuild] = !this[togglerBuild];
+        
       };
 
       //Getting data

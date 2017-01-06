@@ -24,7 +24,7 @@
         .then(function onlyReturnData(response) {
 
             var humanServicesData = {
-              seniors: { type: 'FeatureCollection', features: [] },
+              seniors: { type: 'FeatureCollection', features: []},
               parentResources: { type: 'FeatureCollection', features: [] },
               healthResources: { type: 'FeatureCollection', features: [] },
               fhg_FinacialResources: { type: 'FeatureCollection', features: [] },
@@ -35,6 +35,7 @@
               infoReferralLegal: { type: 'FeatureCollection', features: [] },
               irResources: { type: 'FeatureCollection', features: [] },
               dcFedResources: { type: 'FeatureCollection', features: [] }
+              //features.properties['marker-symbol'] = 'car', features.properties['marker-size'] = 'small', features.properties['marker-symbol'] = '#ff4400'
 
             };
 

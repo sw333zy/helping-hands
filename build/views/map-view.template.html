@@ -4,18 +4,69 @@
   <ul class='toggle'>
     <li >
       <article>
-          <input type='radio' ng-model='toggleGroup' value='seniors' ng-change='mapView.showGroup("seniors")'>
-          <!-- ng-click='mapView.toggle("seniors")' -->
-          <p>Senior Resources</p>
+          <input type='button' value='Senior Resources' ng-click='mapView.toggle("seniors")'>
       </article>
     </li>
     <li >
       <article>
-        <input type='radio' ng-model='toggleGroup' value='parents' ng-change='mapView.showGroup("parents")'>
-          <!-- <input type='radio' name='toggle' ng-click='mapView.toggle("parents")' > -->
-          <p>Parent Resources</p>
+        <input type='button' value='Parent Resources' ng-click='mapView.toggle("parents")'>
+          <!-- <input type='button' name='toggle' ng-click='mapView.toggle("parents")' > -->
       </article>
     </li>
+    <li>
+      <article>
+        <input type='button' value='Health Resources' ng-click='mapView.toggle("health")'>
+          <!-- <input type='button' name='toggle' ng-click='mapView.toggle("parents")' > -->
+      </article>
+    </li>
+    <li>
+    <article>
+      <input type='button' value='Food, Housing, &amp General Finance Resources' ng-click='mapView.toggle("fhg")'>
+        <!-- <input type='button' name='toggle' ng-click='mapView.toggle("parents")' > -->
+    </article>
+  </li>
+  <li>
+  <article>
+    <input type='button' value='Job &amp Adult Education Resources' ng-click='mapView.toggle("jobeducation")'>
+      <!-- <input type='button' name='toggle' ng-click='mapView.toggle("parents")' > -->
+  </article>
+</li>
+<li>
+<article>
+  <input type='button' value='Abuse, Counseling, &amp Crisis Resources' ng-click='mapView.toggle("crisis")'>
+    <!-- <input type='button' name='toggle' ng-click='mapView.toggle("parents")' > -->
+</article>
+</li>
+<li>
+<article>
+  <input type='button' value='General Emergency Asssistance' ng-click='mapView.toggle("generalemergency")'>
+    <!-- <input type='button' name='toggle' ng-click='mapView.toggle("parents")' > -->
+</article>
+</li>
+<li>
+<article>
+  <input type='button' value='Teen &amp Youth Resources' ng-click='mapView.toggle("teen")'>
+    <!-- <input type='button' name='toggle' ng-click='mapView.toggle("parents")' > -->
+</article>
+</li>
+<li>
+<article>
+  <input type='button' value='Information, Referrals, &amp Legal Resources' ng-click='mapView.toggle("info")'>
+    <!-- <input type='button' name='toggle' ng-click='mapView.toggle("parents")' > -->
+</article>
+</li>
+<li>
+<article>
+  <input type='button' value='Immigrant &amp Refugee Resources' ng-click='mapView.toggle("immigrant")'>
+    <!-- <input type='button' name='toggle' ng-click='mapView.toggle("parents")' > -->
+</article>
+</li>
+<li>
+<article>
+  <input type='button' value='District &amp Federal Resources' ng-click='mapView.toggle("dcFed")'>
+    <!-- <input type='button' name='toggle' ng-click='mapView.toggle("parents")' > -->
+</article>
+</li>
   </ul>
 
 
