@@ -7,7 +7,6 @@
     DcHumanService.$inject = ['$http'];
 
     function DcHumanService($http) {
-      console.log('dc open data service');
 
       return {
         getHumanServices: getHumanServices
@@ -23,7 +22,6 @@
             method: 'GET'
         })
         .then(function onlyReturnData(response) {
-            console.log(response);
 
             var humanServicesData = {
               seniors: { type: 'FeatureCollection', features: [] },

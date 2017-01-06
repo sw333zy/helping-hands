@@ -8,7 +8,6 @@
 
     function MapViewController($stateParams, CurrentAddressService, DcHumanService) {
 
-      console.log("MapViewController", $stateParams.address);
       CurrentAddressService.addAddress($stateParams.address);
       this.goToAddress = {};
 
@@ -16,10 +15,19 @@
       this.seniorsToggle = false;
       this.parentsToggle = false;
 
-      this.toggle = function toggle() {
-      console.log('do i work');
-      this.seniorsToggle = !this.seniorsToggle;
-      this.parentsToggle = !this.parentsToggle;
+      this.showGroup = function showGroup(group) {
+        console.log('group is', group);
+      }
+
+      this.toggle = function toggle(toggler) {
+        // if (toggler === 'seniors') {
+        //   this.seniorsToggle = !this.seniorsToggle;
+        // } else if (toggler === 'parents') {
+        //   this.parentsToggle = !this.parentsToggle;
+        // }
+        var togglerBuild = toggler + 'Toggle';
+        console.log(togglerBuild);
+        this[togglerBuild] = !this[togglerBuild];
       };
 
       //Getting data
@@ -34,8 +42,6 @@
             console.log('the DC services data call failed', err);
           });
       };
-
-      this.getHumanServices();
   }
 
 }());

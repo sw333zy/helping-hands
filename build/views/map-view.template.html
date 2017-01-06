@@ -4,13 +4,15 @@
   <ul class='toggle'>
     <li >
       <article>
-          <input type='checkbox'  ng-click='mapView.toggle()' >
+          <input type='radio' ng-model='toggleGroup' value='seniors' ng-change='mapView.showGroup("seniors")'>
+          <!-- ng-click='mapView.toggle("seniors")' -->
           <p>Senior Resources</p>
       </article>
     </li>
     <li >
       <article>
-          <input type='checkbox'  ng-click='mapView.toggle()' >
+        <input type='radio' ng-model='toggleGroup' value='parents' ng-change='mapView.showGroup("parents")'>
+          <!-- <input type='radio' name='toggle' ng-click='mapView.toggle("parents")' > -->
           <p>Parent Resources</p>
       </article>
     </li>

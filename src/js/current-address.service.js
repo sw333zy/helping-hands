@@ -7,7 +7,6 @@
     CurrentAddressService.$inject = [ '$http' ];
 
     function CurrentAddressService($http) {
-        console.log('creating service');
 
 
         return {
@@ -20,14 +19,11 @@
          */
         function addAddress(address) {
           var street = address.street;
-          console.log(street);
           var city = address.city;
           var state = address.state;
           var zip = address.zip;
 
           var addressToPass = [street , city , state , zip].join("+");
-          console.log(addressToPass);
-          console.log(encodeURI(addressToPass));
             return $http({
                 url: 'https://api.mapbox.com/geocoding/v5/mapbox.places/' + encodeURI(addressToPass) + '.json?access_token=pk.eyJ1Ijoic3czMzN6eSIsImEiOiJjaXdzMnluaXUxM3hwMnRzN3I4cHl2bnBnIn0.MhLpogI8pC6zp8qUBMID0w', //need query and api key
                 method: 'GET'
