@@ -449,13 +449,13 @@
         // } else if (toggler === 'parents') {
         //   this.parentsToggle = !this.parentsToggle;
         // }
-        this.seniorsToggle = false;
-        this.parentsToggle = false;
+        this.seniorsToggle = true;
+        this.parentsToggle = true;
 
         var togglerBuild = toggler + 'Toggle';
         console.log(togglerBuild);
         this[togglerBuild] = !this[togglerBuild];
-        
+
       };
 
       //Getting data

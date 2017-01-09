@@ -1,4 +1,20 @@
-.jumbotron {
-background-image: url('../img/HelpingHand.jpg');
-background-size: cover;
-height: 100%;}
+// aside {
+// background-image: url('../img/Story4.jpg');
+// background-size: cover;
+// height: 100%;}
+
+body {
+  background-image: url('../img/Story4.jpg');
+
+}
+
+.motto {
+  top: 20px;
+  left: 400px;
+  h1 {
+    color: #ffffff;
+  }
+  blockquote {
+    color: #ffffff;
+  }
+}

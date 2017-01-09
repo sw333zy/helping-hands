@@ -38,9 +38,18 @@ body {
 .toggle {
   z-index: 999; }
 
-.jumbotron {
-  background-image: url("../img/HelpingHand.jpg");
-  background-size: cover;
-  height: 100%; }
+main {
+  display: inline; }
+
+body {
+  background-image: url("../img/Story4.jpg"); }
+
+.motto {
+  top: 20px;
+  left: 400px; }
+  .motto h1 {
+    color: #ffffff; }
+  .motto blockquote {
+    color: #ffffff; }
 
 /*# sourceMappingURL=styles.css.map */
