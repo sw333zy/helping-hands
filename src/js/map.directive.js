@@ -10,21 +10,21 @@
     return {
       restrict: 'EA',
       scope: {
-        showSeniorResources: '=seniors',
+        showShelterResources: '=shelter',
         showParentResources: '=parents'
       },
       link: toggleMap
     };
 
-    //Senior
+    //Shelter
 
     function toggleMap(scope, element) {
       var map;
-      scope.$watch('showSeniorResources', function toggleSeniorLayer(newValue){
-        console.log('toggled senior watch');
+      scope.$watch('showShelterResources', function toggleShelterLayer(newValue){
+        console.log('toggled shelter watch');
         var geojson = L.mapbox.tileLayer('mapbox.run-bike-hike');
         if(newValue){
-          getSeniorResources();
+          getShelterResources();
         } else{
           map.featureLayer.clearLayers(geojson);
         }
@@ -51,10 +51,10 @@
 
 
       //Function for the toggle
-      function getSeniorResources(){
+      function getShelterResources(){
         DcHumanService.getHumanServices()
         .then(function handleSuccess(data){
-          map.featureLayer.setGeoJSON(data.seniors);
+          map.featureLayer.setGeoJSON(data.shelter);
           map.featureLayer.eachLayer(function (entity) {
             entity.bindPopup(
               'Name:' +
@@ -111,11 +111,3 @@
 }
 
 }());
-// map.featureLayer.on('ready', function(e) {
-//
-//   var clusterGroup = new L.MarkerClusterGroup();
-//   e.target.eachLayer(function(layer) {
-//     clusterGroup.addLayer(layer);
-//   });
-//   map.addLayer(clusterGroup);
-// });
