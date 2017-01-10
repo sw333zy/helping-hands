@@ -122,7 +122,8 @@ module.exports = function(grunt) {
                'src/js/map-view.controller.js',
                'src/js/map.directive.js',
                'src/js/dcopendatahuman.service.js',
-               'test/specs/dcopendatahuman.service.spec.js'
+               'test/specs/dcopendatahuman.service.spec.js',
+               'test/specs/map-view.controller.spec.js'
 
              ]
            }

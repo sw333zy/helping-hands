@@ -471,6 +471,7 @@
         DcHumanService.getHumanServices()
         .then(function handleSuccess(data){
           map.featureLayer.setGeoJSON(data.shelter);
+          console.log(data.shelter);
           map.featureLayer.eachLayer(function (entity) {
             entity.bindPopup(
               'Name:' +
