@@ -1,12 +1,11 @@
 body { margin:0; padding:0; }
-.main-map { position:absolute;
-  top:500px;
-  bottom:0;
-  width:100%;
-  z-index: 99;
- }
+.main-map {
+  height: 100vh;
+  position: relative;
+  top: 51px; }
 .toggle {
-  z-index: 999;
+  position: absolute;
+  top: 380px;
 }
 
 main {
