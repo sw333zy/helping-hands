@@ -91,6 +91,43 @@ module.exports = function(grunt) {
            files: ['src/img/**'],
            tasks: ['copy:img']
          }
+       },
+
+       karma: {
+         options: {
+           frameworks: ['mocha', 'chai'],
+           client: {
+             mocha: {
+               ui: 'bdd'
+             }
+           },
+           browsers: [ 'PhantomJS' ],
+           singleRun: true,
+
+           preprocessors: {
+             'src/js/**/*.js': [ 'coverage' ]
+           },
+           reporters: ['dots', 'coverage'],
+           coverageReporter: {
+             type: 'text-summary'
+           }
+         },
+         humanservices : {
+           options: {
+             files: [
+               'node_modules/angular/angular.js',
+               'node_modules/angular-ui-router/release/angular-ui-router.js',
+               'node_modules/angular-mocks/angular-mocks.js',
+               'src/js/helping-hands.module.js',
+               'src/js/map-view.controller.js',
+               'src/js/map.directive.js',
+               'src/js/dcopendatahuman.service.js',
+               'test/specs/dcopendatahuman.service.spec.js'
+
+             ]
+           }
+         }
+
        }
 
 
@@ -103,6 +140,10 @@ module.exports = function(grunt) {
   grunt.loadNpmTasks('grunt-contrib-jshint');
   grunt.loadNpmTasks('grunt-contrib-concat');
   grunt.loadNpmTasks('grunt-contrib-watch');
+  grunt.loadNpmTasks('grunt-karma');
 
-  grunt.registerTask('default', [ 'clean', 'copy', 'sass', 'concat' ]); //add back sass
+
+  grunt.registerTask('test', ['karma']);
+
+  grunt.registerTask('default', [ 'clean','karma', 'copy', 'sass', 'concat' ]); //add back sass
 };
