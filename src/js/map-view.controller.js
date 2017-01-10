@@ -4,28 +4,24 @@
   angular.module('helpingHands')
     .controller('MapViewController', MapViewController);
 
-    MapViewController.$inject = ['$stateParams', 'CurrentAddressService', 'DcHumanService'];
+    MapViewController.$inject = ['$stateParams', 'DcHumanService'];
 
-    function MapViewController($stateParams, CurrentAddressService, DcHumanService) {
+    function MapViewController($stateParams, DcHumanService) {
 
-      CurrentAddressService.addAddress($stateParams.address);
-      this.goToAddress = {};
 
-      //toggle filter for Senior Resources
-      this.seniorsToggle = false;
+
+      //toggle filter for Shelter Resources
+      this.shelterToggle = false;
       this.parentsToggle = false;
 
-      // this.showGroup = function showGroup(group) {
-      //   console.log('group is', group);
-      // };
 
       this.toggle = function toggle(toggler) {
-        // if (toggler === 'seniors') {
-        //   this.seniorsToggle = !this.seniorsToggle;
+        // if (toggler === 'shelters') {
+        //   this.shelterToggle = !this.shelterToggle;
         // } else if (toggler === 'parents') {
         //   this.parentsToggle = !this.parentsToggle;
         // }
-        this.seniorsToggle = true;
+        this.shelterToggle = true;
         this.parentsToggle = true;
 
         var togglerBuild = toggler + 'Toggle';
@@ -36,7 +32,6 @@
 
       //Getting data
       this.getHumanServices = function getHumanServices(){
-        // console.log('trying to get DC service data');
 
         DcHumanService.getHumanServices()
           .then(function success(data){
