@@ -24,7 +24,7 @@
         .then(function onlyReturnData(response) {
 
             var humanServicesData = {
-              seniors: { type: 'FeatureCollection', features: []},
+              shelter: { type: 'FeatureCollection', features: []},
               parentResources: { type: 'FeatureCollection', features: [] },
               healthResources: { type: 'FeatureCollection', features: [] },
               fhg_FinacialResources: { type: 'FeatureCollection', features: [] },
@@ -39,14 +39,21 @@
 
             };
 
-            //Filtering for Senior Resources
+            //Filtering for Shelters and Homeless Resources
 
-            humanServicesData.seniors.features = response.data.features.filter(function filterShelter(entity){
+            humanServicesData.shelter.features = response.data.features.filter(function filterShelter(entity){
               if (!entity.properties.KEYWORD) {
                 return false;
               }
+              var shouldInclude = false;
 
-              return entity.properties.KEYWORD.toLowerCase().indexOf('seniors') > -1;
+              if (entity.properties.KEYWORD.toLowerCase().indexOf('shelter') > -1) {
+                shouldInclude = true;
+              }
+              if (entity.properties.KEYWORD.toLowerCase().indexOf('homeless') > -1) {
+                shouldInclude = true;
+              }
+              return shouldInclude;
             });
 
 
