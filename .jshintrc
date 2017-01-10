@@ -89,6 +89,11 @@
     // Custom Globals
     "globals"       : {
       "angular"     : true,
-      "L": true
+      "L": true,
+      "module": true,
+      "chai": true,
+      "inject": true
+
+
       }        // additional predefined global variables
 }
