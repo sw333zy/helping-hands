@@ -13,6 +13,13 @@
       //toggle filter for Shelter Resources
       this.shelterToggle = false;
       this.parentsToggle = false;
+      this.healthToggle = false;
+      this.fhgToggle = false;
+      this.adultEdToggle = false;
+      this.crisisToggle = false;
+      this.emergencyToggle = false;
+      this.teenToggle = false;
+      this.infoToggle = false;
 
 
       this.toggle = function toggle(toggler) {
@@ -21,13 +28,11 @@
         // } else if (toggler === 'parents') {
         //   this.parentsToggle = !this.parentsToggle;
         // }
-        this.shelterToggle = true;
-        this.parentsToggle = true;
 
         var togglerBuild = toggler + 'Toggle';
-        console.log(togglerBuild);
+        console.log('what are we toggling', togglerBuild, this[togglerBuild]);
         this[togglerBuild] = !this[togglerBuild];
-
+        console.log('after toggling, infoToggle is', this['infoToggle']);
       };
 
       //Getting data
