@@ -86,9 +86,10 @@
 
     });
     it('should show shelter data when toggled', function() {
-      MapViewController.toggle();
+      MapViewController.toggle('shelter');
       var shelter = MapViewController.shelterToggle;
       expect(shelter).to.equal(true);
     });
+
   });
 }());
