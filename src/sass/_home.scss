@@ -1,20 +1,100 @@
-// aside {
-// background-image: url('../img/Story4.jpg');
-// background-size: cover;
-// height: 100%;}
+*{
+  margin: 0;
+  padding: 0;
+}
 
-body {
+.header {
   background-image: url('../img/Story4.jpg');
+  background-attachment: fixed;
+  width: 100%;
+  height: 100vh;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
 
+.title {
+  font-family: 'Amatic SC', cursive;
+  font-size: 13em;
 }
 
 .motto {
-  top: 20px;
-  left: 400px;
   h1 {
     color: #ffffff;
   }
-  blockquote {
-    color: #ffffff;
-  }
+
+}
+
+i {
+  color: #ffffff;
+  size: 5em;
+}
+
+.qoute {
+  font-family: 'Cedarville Cursive', cursive;
+  font-size: 2em;
+}
+
+.info {
+  height: 720px;
+}
+
+.gray {
+    background: #E5E5E5;
+    padding: 60px 0 30px 0;
+}
+
+.card {
+  display: inline-block;
+  position: relative;
+  width: 100%;
+  margin-bottom: 30px;
+  border-radius: 6px;
+  color: rgba(0, 0, 0, 0.87);
+  background: #fff;
+  box-shadow: 0 2px 2px 0 rgba(0, 0, 0, 0.14), 0 3px 1px -2px rgba(0, 0, 0, 0.2), 0 1px 5px 0 rgba(0, 0, 0, 0.12);
+}
+
+.card .image {
+  height: 60%;
+  position: relative;
+  overflow: hidden;
+  margin-left: 15px;
+  margin-right: 15px;
+  margin-top: -30px;
+  border-radius: 6px;
+  box-shadow: 0 16px 38px -12px rgba(0, 0, 0, 0.56), 0 4px 25px 0px rgba(0, 0, 0, 0.12), 0 8px 10px -5px rgba(0, 0, 0, 0.2);
+}
+
+.card .image img {
+  width: 100%;
+  height: 100%;
+  border-radius: 6px;
+  pointer-events: none;
+}
+
+
+
+.card-caption a {
+  color: #33333;
+  text-decoration: none;
+}
+
+.card-caption {
+  font-weight: 700;
+  font-family: 'Amatic SC', cursive;
+  font-size: 2em;
+}
+
+
+.text-danger {
+  color: #f44336;
+}
+
+.text-success {
+  color: #4caf50;
+}
+
+.text-info {
+  color: #00bcd4;
 }
