@@ -30,14 +30,13 @@ body {
   padding: 0; }
 
 .main-map {
-  position: absolute;
-  top: 500px;
-  bottom: 0;
-  width: 100%;
-  z-index: 99; }
+  height: 100vh;
+  position: relative;
+  top: 51px; }
 
 .toggle {
-  z-index: 999; }
+  position: absolute;
+  top: 380px; }
 
 main {
   display: inline; }
@@ -100,8 +99,7 @@ i {
 .card .image img {
   width: 100%;
   height: 100%;
-  border-radius: 6px;
-  pointer-events: none; }
+  border-radius: 6px; }
 
 .card-caption a {
   color: #33333;

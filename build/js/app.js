@@ -11,18 +11,17 @@
 
     $stateProvider
       .state({
-        name: 'home', //switch back to home
-        url: '', //switch back to blank
+        name: 'home',
+        url: '',
         templateUrl: 'views/home.template.html',
-        controller: 'AddressController',
-        controllerAs: 'AddressController'
+      
 
 
       })
 
       .state({
-        name: 'addressMapView', //switch back to addressMapView
-        url: '/addressMapView', //switch back to /adress
+        name: 'addressMapView',
+        url: '/addressMapView',
         templateUrl: 'views/map-view.template.html',
         controller: 'MapViewController',
         controllerAs: 'mapView',
@@ -35,67 +34,6 @@
 
   }
 }());
-
-(function() {
-  'use strict';
-
-  angular.module('helpingHands')
-    .controller('AddressController', AddressController);
-
-  AddressController.$inject = [ '$state'];
-
-    function AddressController($state) {
-
-      this.addressToAdd = {};
-
-      this.addAddress = function addAddress(address) {
-        $state.go('addressMapView', {address: address});
-
-      };
-
-    }
-
-}());
-
-(function() {
-    'use strict';
-
-    angular.module('helpingHands')
-        .factory('CurrentAddressService', CurrentAddressService);
-
-    CurrentAddressService.$inject = [ '$http' ];
-
-    function CurrentAddressService($http) {
-
-
-        return {
-            addAddress: addAddress
-        };
-
-        /**
-         * Get address from api call
-         * @return {Promise}     the completed ajax call promise
-         */
-        function addAddress(address) {
-          var street = address.street;
-          var city = address.city;
-          var state = address.state;
-          var zip = address.zip;
-
-          var addressToPass = [street , city , state , zip].join("+");
-            return $http({
-                url: 'https://api.mapbox.com/geocoding/v5/mapbox.places/' + encodeURI(addressToPass) + '.json?access_token=pk.eyJ1Ijoic3czMzN6eSIsImEiOiJjaXdzMnluaXUxM3hwMnRzN3I4cHl2bnBnIn0.MhLpogI8pC6zp8qUBMID0w', //need query and api key
-                method: 'GET'
-            })
-            .then(function onlyReturnData(response) {
-                console.log('data from current address', response);
-
-                return response.data;
-            });
-        }
-    }
-
-})();
 
 (function() {
   'use strict';
@@ -123,7 +61,7 @@
         .then(function onlyReturnData(response) {
 
             var humanServicesData = {
-              seniors: { type: 'FeatureCollection', features: []},
+              shelter: { type: 'FeatureCollection', features: []},
               parentResources: { type: 'FeatureCollection', features: [] },
               healthResources: { type: 'FeatureCollection', features: [] },
               fhg_FinacialResources: { type: 'FeatureCollection', features: [] },
@@ -138,14 +76,21 @@
 
             };
 
-            //Filtering for Senior Resources
+            //Filtering for Shelters and Homeless Resources
 
-            humanServicesData.seniors.features = response.data.features.filter(function filterShelter(entity){
+            humanServicesData.shelter.features = response.data.features.filter(function filterShelter(entity){
               if (!entity.properties.KEYWORD) {
                 return false;
               }
+              var shouldInclude = false;
 
-              return entity.properties.KEYWORD.toLowerCase().indexOf('seniors') > -1;
+              if (entity.properties.KEYWORD.toLowerCase().indexOf('shelter') > -1) {
+                shouldInclude = true;
+              }
+              if (entity.properties.KEYWORD.toLowerCase().indexOf('homeless') > -1) {
+                shouldInclude = true;
+              }
+              return shouldInclude;
             });
 
 
@@ -428,28 +373,24 @@
   angular.module('helpingHands')
     .controller('MapViewController', MapViewController);
 
-    MapViewController.$inject = ['$stateParams', 'CurrentAddressService', 'DcHumanService'];
+    MapViewController.$inject = ['$stateParams', 'DcHumanService'];
 
-    function MapViewController($stateParams, CurrentAddressService, DcHumanService) {
+    function MapViewController($stateParams, DcHumanService) {
 
-      CurrentAddressService.addAddress($stateParams.address);
-      this.goToAddress = {};
 
-      //toggle filter for Senior Resources
-      this.seniorsToggle = false;
+
+      //toggle filter for Shelter Resources
+      this.shelterToggle = false;
       this.parentsToggle = false;
 
-      // this.showGroup = function showGroup(group) {
-      //   console.log('group is', group);
-      // };
 
       this.toggle = function toggle(toggler) {
-        // if (toggler === 'seniors') {
-        //   this.seniorsToggle = !this.seniorsToggle;
+        // if (toggler === 'shelters') {
+        //   this.shelterToggle = !this.shelterToggle;
         // } else if (toggler === 'parents') {
         //   this.parentsToggle = !this.parentsToggle;
         // }
-        this.seniorsToggle = true;
+        this.shelterToggle = true;
         this.parentsToggle = true;
 
         var togglerBuild = toggler + 'Toggle';
@@ -460,7 +401,6 @@
 
       //Getting data
       this.getHumanServices = function getHumanServices(){
-        // console.log('trying to get DC service data');
 
         DcHumanService.getHumanServices()
           .then(function success(data){
@@ -486,21 +426,21 @@
     return {
       restrict: 'EA',
       scope: {
-        showSeniorResources: '=seniors',
+        showShelterResources: '=shelter',
         showParentResources: '=parents'
       },
       link: toggleMap
     };
 
-    //Senior
+    //Shelter
 
     function toggleMap(scope, element) {
       var map;
-      scope.$watch('showSeniorResources', function toggleSeniorLayer(newValue){
-        console.log('toggled senior watch');
+      scope.$watch('showShelterResources', function toggleShelterLayer(newValue){
+        console.log('toggled shelter watch');
         var geojson = L.mapbox.tileLayer('mapbox.run-bike-hike');
         if(newValue){
-          getSeniorResources();
+          getShelterResources();
         } else{
           map.featureLayer.clearLayers(geojson);
         }
@@ -527,10 +467,10 @@
 
 
       //Function for the toggle
-      function getSeniorResources(){
+      function getShelterResources(){
         DcHumanService.getHumanServices()
         .then(function handleSuccess(data){
-          map.featureLayer.setGeoJSON(data.seniors);
+          map.featureLayer.setGeoJSON(data.shelter);
           map.featureLayer.eachLayer(function (entity) {
             entity.bindPopup(
               'Name:' +
@@ -587,11 +527,3 @@
 }
 
 }());
-// map.featureLayer.on('ready', function(e) {
-//
-//   var clusterGroup = new L.MarkerClusterGroup();
-//   e.target.eachLayer(function(layer) {
-//     clusterGroup.addLayer(layer);
-//   });
-//   map.addLayer(clusterGroup);
-// });
