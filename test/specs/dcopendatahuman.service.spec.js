@@ -156,8 +156,14 @@
           expect(data.infoReferralLegal.features).to.be.an('array');
           expect(data.infoReferralLegal.features.length).to.equal(1);
           expect(data.infoReferralLegal.features[0].properties.KEYWORD).to.equal('legal-aid');
-
-          // ..... do the same for each type
+          expect(data.irResources).to.be.an('object');
+          expect(data.irResources.features).to.be.an('array');
+          expect(data.irResources.features.length).to.equal(2);
+          expect(data.irResources.features[0].properties.KEYWORD).to.equal('immigration');
+          expect(data.dcFedResources).to.be.an('object');
+          expect(data.dcFedResources.features).to.be.an('array');
+          expect(data.dcFedResources.features.length).to.equal(1);
+          expect(data.dcFedResources.features[0].properties.KEYWORD).to.equal('dc government');
 
 
           doneCallback();
