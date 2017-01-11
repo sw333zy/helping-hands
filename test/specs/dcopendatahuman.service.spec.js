@@ -139,7 +139,13 @@
           expect(data.jobEducationAdult).to.be.an('object');
           expect(data.jobEducationAdult.features).to.be.an('array');
           expect(data.jobEducationAdult.features.length).to.equal(1);
-          expect(data.jobEducationAdult.features[0].properties.KEYWORD).to.equal('food stamps');
+          expect(data.jobEducationAdult.features[0].properties.KEYWORD).to.equal('adult education');
+          expect(data.crisisAbuseCounsel).to.be.an('object');
+          expect(data.crisisAbuseCounsel.features).to.be.an('array');
+          expect(data.crisisAbuseCounsel.features.length).to.equal(1);
+          expect(data.crisisAbuseCounsel.features[0].properties.KEYWORD).to.equal('abuse-emotional');
+
+          
 
           // ..... do the same for each type
 
