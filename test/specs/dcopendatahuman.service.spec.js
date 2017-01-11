@@ -17,8 +17,6 @@
       $httpBackend
         .whenGET('http://opendata.dc.gov/datasets/2867206451704e84b5480af8e3c314be_8.geojson')
         .respond({
-          features:[
-          {
           "type": "FeatureCollection",
           "features": [
             {
@@ -96,7 +94,7 @@
             {
               "type": "Feature",
               "properties": {
-                "KEYWORD": "vikings"
+                "KEYWORD": "refugees"
               }
             },
             {
@@ -105,9 +103,6 @@
                 "KEYWORD": "null"
               }
             }
-
-          ]
-        }
       ]
     });
       $httpBackend
@@ -120,19 +115,39 @@
       expect(result).to.be.an('object');
       expect(result.then).to.be.a('function');
 
+      console.log('do i get here');
+
       result
         .then(function(data) {
           expect(data).to.be.an('object');
-          expect(data.features).to.be.an('array');
-          expect(data.features.length).to.equal(10);
-          expect(data.features[0].properties.KEYWORD).to.equal('shelter');
-          expect(data.features[0].geometry.coordinates).to.be.an('array');
+          expect(data.shelter).to.be.an('object');
+          expect(data.shelter.features).to.be.an('array');
+          expect(data.shelter.features.length).to.equal(1);
+          expect(data.shelter.features[0].properties.KEYWORD).to.equal('shelter');
+          expect(data.parentResources).to.be.an('object');
+          expect(data.parentResources.features).to.be.an('array');
+          expect(data.parentResources.features.length).to.equal(1);
+          expect(data.parentResources.features[0].properties.KEYWORD).to.equal('childcare-infants');
+          expect(data.healthResources).to.be.an('object');
+          expect(data.healthResources.features).to.be.an('array');
+          expect(data.healthResources.features.length).to.equal(1);
+          expect(data.healthResources.features[0].properties.KEYWORD).to.equal('aids');
+          expect(data.fhg_FinacialResources).to.be.an('object');
+          expect(data.fhg_FinacialResources.features).to.be.an('array');
+          expect(data.fhg_FinacialResources.features.length).to.equal(1);
+          expect(data.fhg_FinacialResources.features[0].properties.KEYWORD).to.equal('food stamps');
+          expect(data.jobEducationAdult).to.be.an('object');
+          expect(data.jobEducationAdult.features).to.be.an('array');
+          expect(data.jobEducationAdult.features.length).to.equal(1);
+          expect(data.jobEducationAdult.features[0].properties.KEYWORD).to.equal('food stamps');
+
+          // ..... do the same for each type
+
 
           doneCallback();
         })
         .catch(function(err) {
-          console.log(err);
-          doneCallback();
+          doneCallback(err.message);
         });
 
       $httpBackend.flush();
