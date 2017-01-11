@@ -152,6 +152,10 @@
           expect(data.teenYouthResources.features).to.be.an('array');
           expect(data.teenYouthResources.features.length).to.equal(1);
           expect(data.teenYouthResources.features[0].properties.KEYWORD).to.equal('runaways');
+          expect(data.infoReferralLegal).to.be.an('object');
+          expect(data.infoReferralLegal.features).to.be.an('array');
+          expect(data.infoReferralLegal.features.length).to.equal(1);
+          expect(data.infoReferralLegal.features[0].properties.KEYWORD).to.equal('legal-aid');
 
           // ..... do the same for each type
 
