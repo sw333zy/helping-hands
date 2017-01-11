@@ -20,6 +20,8 @@
       this.emergencyToggle = false;
       this.teenToggle = false;
       this.infoToggle = false;
+      this.irResourcesToggle = false;
+      this.dcFedResourcesToggle = false;
 
 
       this.toggle = function toggle(toggler) {
@@ -32,7 +34,7 @@
         var togglerBuild = toggler + 'Toggle';
         console.log('what are we toggling', togglerBuild, this[togglerBuild]);
         this[togglerBuild] = !this[togglerBuild];
-        console.log('after toggling, infoToggle is', this['infoToggle']);
+        console.log('after toggling, dcFedResourcesToggle is', this['dcFedResourcesToggle']);
       };
 
       //Getting data

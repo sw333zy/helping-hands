@@ -389,6 +389,8 @@
       this.emergencyToggle = false;
       this.teenToggle = false;
       this.infoToggle = false;
+      this.irResourcesToggle = false;
+      this.dcFedResourcesToggle = false;
 
 
       this.toggle = function toggle(toggler) {
@@ -401,7 +403,7 @@
         var togglerBuild = toggler + 'Toggle';
         console.log('what are we toggling', togglerBuild, this[togglerBuild]);
         this[togglerBuild] = !this[togglerBuild];
-        console.log('after toggling, infoToggle is', this['infoToggle']);
+        console.log('after toggling, dcFedResourcesToggle is', this['dcFedResourcesToggle']);
       };
 
       //Getting data
@@ -439,7 +441,9 @@
         showcrisisAbuseCounsel: '=crisis',
         showgeneralEmergencyAsssistance: '=emergency',
         showteenYouthResources: '=teen',
-        showinfoReferralLegal: '=info'
+        showinfoReferralLegal: '=info',
+        showirResources: '=irResources',
+        showdcFedResources: '=dcFedResources'
 
 
       },
@@ -535,6 +539,25 @@
       var geojson = L.mapbox.tileLayer('mapbox.run-bike-hike');
       if(newValue){
         getinfoReferralLegal();
+      } else{
+        map.featureLayer.clearLayers(geojson);
+      }
+    });
+    //immigrant resources
+    scope.$watch('showirResources', function toggleirResourcesLayer(newValue){
+      console.log('toggled immigrant resource watch');
+      var geojson = L.mapbox.tileLayer('mapbox.run-bike-hike');
+      if(newValue){
+        getirResources();
+      } else{
+        map.featureLayer.clearLayers(geojson);
+      }
+    });
+    scope.$watch('showdcFedResources', function toggledcFedResourcesLayer(newValue){
+      console.log('toggled fed watch');
+      var geojson = L.mapbox.tileLayer('mapbox.run-bike-hike');
+      if(newValue){
+        getdcFedResources();
       } else{
         map.featureLayer.clearLayers(geojson);
       }
@@ -783,6 +806,62 @@
         .then(function handleSuccess(data){
           map.featureLayer.setGeoJSON(data.infoReferralLegal);
           console.log('info', data.infoReferralLegal);
+          map.featureLayer.eachLayer(function (entity) {
+            entity.bindPopup(
+              'Name:' +
+              ' ' +
+              entity.feature.properties.NAME +
+              '<br\> Address:' +
+              ' ' +
+              entity.feature.properties.ADDRESS +
+              '<br\> Phone:' +
+              ' ' +
+              entity.feature.properties.PHONE +
+              '<br\> Website:' +
+              ' ' +
+              entity.feature.properties.WEB_URL +
+              '<br\> Description:' +
+              ' ' + entity.feature.properties.DESCRIPTION
+            );
+          });
+        })
+        .catch(function handleError(err){
+          console.log(err);
+        });
+      }
+      function getirResources(){
+        DcHumanService.getHumanServices()
+        .then(function handleSuccess(data){
+          map.featureLayer.setGeoJSON(data.irResources);
+          console.log('immigrant', data.irResources);
+          map.featureLayer.eachLayer(function (entity) {
+            entity.bindPopup(
+              'Name:' +
+              ' ' +
+              entity.feature.properties.NAME +
+              '<br\> Address:' +
+              ' ' +
+              entity.feature.properties.ADDRESS +
+              '<br\> Phone:' +
+              ' ' +
+              entity.feature.properties.PHONE +
+              '<br\> Website:' +
+              ' ' +
+              entity.feature.properties.WEB_URL +
+              '<br\> Description:' +
+              ' ' + entity.feature.properties.DESCRIPTION
+            );
+          });
+        })
+        .catch(function handleError(err){
+          console.log(err);
+        });
+      }
+      function getdcFedResources(){
+        DcHumanService.getHumanServices()
+        .then(function handleSuccess(data){
+          map.featureLayer.setGeoJSON(data.dcFedResources);
+          console.log('teen', data.dcFedResources);
           map.featureLayer.eachLayer(function (entity) {
             entity.bindPopup(
               'Name:' +
