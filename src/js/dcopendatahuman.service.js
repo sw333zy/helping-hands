@@ -320,6 +320,7 @@
               return shouldInclude;
             });
 
+            sessionStorage.setItem('humanServicesData', angular.toJson(humanServicesData));
 
 
             return humanServicesData;
