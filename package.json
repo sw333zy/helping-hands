@@ -4,7 +4,7 @@
   "description": "",
   "main": "index.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "start": "http-server build/ -p $PORT"
   },
   "repository": {
     "type": "git",
@@ -18,10 +18,12 @@
   "homepage": "https://github.com/sw333zy/helping-hands#readme",
   "dependencies": {
     "angular": "^1.6.0",
-    "jquery": "^3.1.1"
+    "jquery": "^3.1.1",
+    "angular-ui-router": "^0.3.2",
+    "http-server": "^0.9.0"
+
   },
   "devDependencies": {
-    "angular-ui-router": "^0.3.2",
     "angular-mocks": "^1.6.1",
     "chai": "^3.5.0",
     "grunt": "^1.0.1",
@@ -33,7 +35,6 @@
     "grunt-contrib-sass": "^1.0.0",
     "grunt-contrib-watch": "^1.0.0",
     "grunt-karma": "^2.0.0",
-    "http-server": "^0.9.0",
     "karma": "^1.3.0",
     "karma-chai": "^0.1.0",
     "karma-coverage": "^1.1.1",
