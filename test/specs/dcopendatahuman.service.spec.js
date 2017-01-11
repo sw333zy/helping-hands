@@ -148,8 +148,10 @@
           expect(data.generalEmergencyAsssistance.features).to.be.an('array');
           expect(data.generalEmergencyAsssistance.features.length).to.equal(1);
           expect(data.generalEmergencyAsssistance.features[0].properties.KEYWORD).to.equal('utility assistance');
-
-          
+          expect(data.teenYouthResources).to.be.an('object');
+          expect(data.teenYouthResources.features).to.be.an('array');
+          expect(data.teenYouthResources.features.length).to.equal(1);
+          expect(data.teenYouthResources.features[0].properties.KEYWORD).to.equal('runaways');
 
           // ..... do the same for each type
 
