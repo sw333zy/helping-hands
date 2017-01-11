@@ -144,6 +144,10 @@
           expect(data.crisisAbuseCounsel.features).to.be.an('array');
           expect(data.crisisAbuseCounsel.features.length).to.equal(1);
           expect(data.crisisAbuseCounsel.features[0].properties.KEYWORD).to.equal('abuse-emotional');
+          expect(data.generalEmergencyAsssistance).to.be.an('object');
+          expect(data.generalEmergencyAsssistance.features).to.be.an('array');
+          expect(data.generalEmergencyAsssistance.features.length).to.equal(1);
+          expect(data.generalEmergencyAsssistance.features[0].properties.KEYWORD).to.equal('utility assistance');
 
           
 
