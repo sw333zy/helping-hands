@@ -171,7 +171,11 @@
               ' ' +
               entity.feature.properties.WEB_URL +
               '<br\> Description:' +
-              ' ' + entity.feature.properties.DESCRIPTION
+              ' ' + entity.feature.properties.DESCRIPTION +
+              '<br\> Eligibility:' +
+              ' ' + entity.feature.properties.ELIGIBILITY +
+              '<br\> Business Hours:' +
+              ' ' + entity.feature.properties.BUSINESS_HOURS
             );
           });
         })
@@ -202,7 +206,11 @@
               ' ' +
               entity.feature.properties.WEB_URL +
               '<br\> Description:' +
-              ' ' + entity.feature.properties.DESCRIPTION
+              ' ' + entity.feature.properties.DESCRIPTION +
+              '<br\> Eligibility:' +
+              ' ' + entity.feature.properties.ELIGIBILITY +
+              '<br\> Business Hours:' +
+              ' ' + entity.feature.properties.BUSINESS_HOURS
             );
           });
         })
@@ -230,7 +238,11 @@
               ' ' +
               entity.feature.properties.WEB_URL +
               '<br\> Description:' +
-              ' ' + entity.feature.properties.DESCRIPTION
+              ' ' + entity.feature.properties.DESCRIPTION +
+              '<br\> Eligibility:' +
+              ' ' + entity.feature.properties.ELIGIBILITY +
+              '<br\> Business Hours:' +
+              ' ' + entity.feature.properties.BUSINESS_HOURS
             );
           });
         })
@@ -258,7 +270,11 @@
               ' ' +
               entity.feature.properties.WEB_URL +
               '<br\> Description:' +
-              ' ' + entity.feature.properties.DESCRIPTION
+              ' ' + entity.feature.properties.DESCRIPTION +
+              '<br\> Eligibility:' +
+              ' ' + entity.feature.properties.ELIGIBILITY +
+              '<br\> Business Hours:' +
+              ' ' + entity.feature.properties.BUSINESS_HOURS
             );
           });
         })
@@ -286,7 +302,11 @@
               ' ' +
               entity.feature.properties.WEB_URL +
               '<br\> Description:' +
-              ' ' + entity.feature.properties.DESCRIPTION
+              ' ' + entity.feature.properties.DESCRIPTION +
+              '<br\> Eligibility:' +
+              ' ' + entity.feature.properties.ELIGIBILITY +
+              '<br\> Business Hours:' +
+              ' ' + entity.feature.properties.BUSINESS_HOURS
             );
           });
         })
@@ -314,7 +334,11 @@
               ' ' +
               entity.feature.properties.WEB_URL +
               '<br\> Description:' +
-              ' ' + entity.feature.properties.DESCRIPTION
+              ' ' + entity.feature.properties.DESCRIPTION +
+              '<br\> Eligibility:' +
+              ' ' + entity.feature.properties.ELIGIBILITY +
+              '<br\> Business Hours:' +
+              ' ' + entity.feature.properties.BUSINESS_HOURS
             );
           });
         })
@@ -342,7 +366,11 @@
               ' ' +
               entity.feature.properties.WEB_URL +
               '<br\> Description:' +
-              ' ' + entity.feature.properties.DESCRIPTION
+              ' ' + entity.feature.properties.DESCRIPTION +
+              '<br\> Eligibility:' +
+              ' ' + entity.feature.properties.ELIGIBILITY +
+              '<br\> Business Hours:' +
+              ' ' + entity.feature.properties.BUSINESS_HOURS
             );
           });
         })
@@ -370,7 +398,11 @@
               ' ' +
               entity.feature.properties.WEB_URL +
               '<br\> Description:' +
-              ' ' + entity.feature.properties.DESCRIPTION
+              ' ' + entity.feature.properties.DESCRIPTION +
+              '<br\> Eligibility:' +
+              ' ' + entity.feature.properties.ELIGIBILITY +
+              '<br\> Business Hours:' +
+              ' ' + entity.feature.properties.BUSINESS_HOURS
             );
           });
         })
@@ -398,7 +430,11 @@
               ' ' +
               entity.feature.properties.WEB_URL +
               '<br\> Description:' +
-              ' ' + entity.feature.properties.DESCRIPTION
+              ' ' + entity.feature.properties.DESCRIPTION +
+              '<br\> Eligibility:' +
+              ' ' + entity.feature.properties.ELIGIBILITY +
+              '<br\> Business Hours:' +
+              ' ' + entity.feature.properties.BUSINESS_HOURS
             );
           });
         })
@@ -426,7 +462,11 @@
               ' ' +
               entity.feature.properties.WEB_URL +
               '<br\> Description:' +
-              ' ' + entity.feature.properties.DESCRIPTION
+              ' ' + entity.feature.properties.DESCRIPTION +
+              '<br\> Eligibility:' +
+              ' ' + entity.feature.properties.ELIGIBILITY +
+              '<br\> Business Hours:' +
+              ' ' + entity.feature.properties.BUSINESS_HOURS
             );
           });
         })
@@ -454,7 +494,11 @@
               ' ' +
               entity.feature.properties.WEB_URL +
               '<br\> Description:' +
-              ' ' + entity.feature.properties.DESCRIPTION
+              ' ' + entity.feature.properties.DESCRIPTION +
+              '<br\> Eligibility:' +
+              ' ' + entity.feature.properties.ELIGIBILITY +
+              '<br\> Business Hours:' +
+              ' ' + entity.feature.properties.BUSINESS_HOURS
             );
           });
         })
