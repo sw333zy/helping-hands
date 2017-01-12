@@ -19,10 +19,9 @@
         showgeneralEmergencyAsssistance: '=emergency',
         showteenYouthResources: '=teen',
         showinfoReferralLegal: '=info',
-        showirResources: '=irResources',
-        showdcFedResources: '=dcFedResources'
-
-
+        showirResources: '=irresources',
+        showdcFedResources: '=dcfedresources'
+        //in angular you camel case in the html you hyphinate
       },
       link: toggleMap
     };
@@ -122,7 +121,7 @@
     });
     //immigrant resources
     scope.$watch('showirResources', function toggleirResourcesLayer(newValue){
-      console.log('toggled immigrant resource watch');
+      console.log('toggled ir immigrant resource watch');
       var geojson = L.mapbox.tileLayer('mapbox.run-bike-hike');
       if(newValue){
         getirResources();
@@ -130,6 +129,7 @@
         map.featureLayer.clearLayers(geojson);
       }
     });
+
     scope.$watch('showdcFedResources', function toggledcFedResourcesLayer(newValue){
       console.log('toggled fed watch');
       var geojson = L.mapbox.tileLayer('mapbox.run-bike-hike');
@@ -139,6 +139,7 @@
         map.featureLayer.clearLayers(geojson);
       }
     });
+
 
 
 
@@ -158,23 +159,25 @@
           console.log('shelter', data.shelter);
           map.featureLayer.eachLayer(function (entity) {
             entity.bindPopup(
-              'Name:' +
+              '<b>Name:</b>' +
               ' ' +
               entity.feature.properties.NAME +
-              '<br\> Address:' +
+              '<br\> <b>Address:</b>' +
               ' ' +
               entity.feature.properties.ADDRESS +
-              '<br\> Phone:' +
+              '<br\> <b>Phone:</b>' +
               ' ' +
               entity.feature.properties.PHONE +
-              '<br\> Website:' +
+              '<br\> <b>Website:</b>' +
               ' ' +
+              '<a href="' + entity.feature.properties.WEB_URL + '">' +
               entity.feature.properties.WEB_URL +
-              '<br\> Description:' +
+              '</a>' +
+              '<br\> <b>Description:</b>' +
               ' ' + entity.feature.properties.DESCRIPTION +
-              '<br\> Eligibility:' +
+              '<br\> <b>Eligibility:</b>' +
               ' ' + entity.feature.properties.ELIGIBILITY +
-              '<br\> Business Hours:' +
+              '<br\> <b>Business Hours:</b>' +
               ' ' + entity.feature.properties.BUSINESS_HOURS
             );
           });
@@ -193,23 +196,25 @@
 
           map.featureLayer.eachLayer(function (entity) {
             entity.bindPopup(
-              'Name:' +
+              '<b>Name:</b>' +
               ' ' +
               entity.feature.properties.NAME +
-              '<br\> Address:' +
+              '<br\> <b>Address:</b>' +
               ' ' +
               entity.feature.properties.ADDRESS +
-              '<br\> Phone:' +
+              '<br\> <b>Phone:</b>' +
               ' ' +
               entity.feature.properties.PHONE +
-              '<br\> Website:' +
+              '<br\> <b>Website:</b>' +
               ' ' +
+              '<a href="' + entity.feature.properties.WEB_URL + '">' +
               entity.feature.properties.WEB_URL +
-              '<br\> Description:' +
+              '</a>' +
+              '<br\> <b>Description:</b>' +
               ' ' + entity.feature.properties.DESCRIPTION +
-              '<br\> Eligibility:' +
+              '<br\> <b>Eligibility:</b>' +
               ' ' + entity.feature.properties.ELIGIBILITY +
-              '<br\> Business Hours:' +
+              '<br\> <b>Business Hours:</b>' +
               ' ' + entity.feature.properties.BUSINESS_HOURS
             );
           });
@@ -225,23 +230,25 @@
           console.log('health', data.healthResources);
           map.featureLayer.eachLayer(function (entity) {
             entity.bindPopup(
-              'Name:' +
+              '<b>Name:</b>' +
               ' ' +
               entity.feature.properties.NAME +
-              '<br\> Address:' +
+              '<br\> <b>Address:</b>' +
               ' ' +
               entity.feature.properties.ADDRESS +
-              '<br\> Phone:' +
+              '<br\> <b>Phone:</b>' +
               ' ' +
               entity.feature.properties.PHONE +
-              '<br\> Website:' +
+              '<br\> <b>Website:</b>' +
               ' ' +
+              '<a href="' + entity.feature.properties.WEB_URL + '">' +
               entity.feature.properties.WEB_URL +
-              '<br\> Description:' +
+              '</a>' +
+              '<br\> <b>Description:</b>' +
               ' ' + entity.feature.properties.DESCRIPTION +
-              '<br\> Eligibility:' +
+              '<br\> <b>Eligibility:</b>' +
               ' ' + entity.feature.properties.ELIGIBILITY +
-              '<br\> Business Hours:' +
+              '<br\> <b>Business Hours:</b>' +
               ' ' + entity.feature.properties.BUSINESS_HOURS
             );
           });
@@ -257,23 +264,25 @@
           console.log('fhg', data.fhg_FinacialResources);
           map.featureLayer.eachLayer(function (entity) {
             entity.bindPopup(
-              'Name:' +
+              '<b>Name:</b>' +
               ' ' +
               entity.feature.properties.NAME +
-              '<br\> Address:' +
+              '<br\> <b>Address:</b>' +
               ' ' +
               entity.feature.properties.ADDRESS +
-              '<br\> Phone:' +
+              '<br\> <b>Phone:</b>' +
               ' ' +
               entity.feature.properties.PHONE +
-              '<br\> Website:' +
+              '<br\> <b>Website:</b>' +
               ' ' +
+              '<a href="' + entity.feature.properties.WEB_URL + '">' +
               entity.feature.properties.WEB_URL +
-              '<br\> Description:' +
+              '</a>' +
+              '<br\> <b>Description:</b>' +
               ' ' + entity.feature.properties.DESCRIPTION +
-              '<br\> Eligibility:' +
+              '<br\> <b>Eligibility:</b>' +
               ' ' + entity.feature.properties.ELIGIBILITY +
-              '<br\> Business Hours:' +
+              '<br\> <b>Business Hours:</b>' +
               ' ' + entity.feature.properties.BUSINESS_HOURS
             );
           });
@@ -289,23 +298,25 @@
           console.log('adultEd', data.jobEducationAdult);
           map.featureLayer.eachLayer(function (entity) {
             entity.bindPopup(
-              'Name:' +
+              '<b>Name:</b>' +
               ' ' +
               entity.feature.properties.NAME +
-              '<br\> Address:' +
+              '<br\> <b>Address:</b>' +
               ' ' +
               entity.feature.properties.ADDRESS +
-              '<br\> Phone:' +
+              '<br\> <b>Phone:</b>' +
               ' ' +
               entity.feature.properties.PHONE +
-              '<br\> Website:' +
+              '<br\> <b>Website:</b>' +
               ' ' +
+              '<a href="' + entity.feature.properties.WEB_URL + '">' +
               entity.feature.properties.WEB_URL +
-              '<br\> Description:' +
+              '</a>' +
+              '<br\> <b>Description:</b>' +
               ' ' + entity.feature.properties.DESCRIPTION +
-              '<br\> Eligibility:' +
+              '<br\> <b>Eligibility:</b>' +
               ' ' + entity.feature.properties.ELIGIBILITY +
-              '<br\> Business Hours:' +
+              '<br\> <b>Business Hours:</b>' +
               ' ' + entity.feature.properties.BUSINESS_HOURS
             );
           });
@@ -321,23 +332,25 @@
           console.log('crisis', data.crisisAbuseCounsel);
           map.featureLayer.eachLayer(function (entity) {
             entity.bindPopup(
-              'Name:' +
+              '<b>Name:</b>' +
               ' ' +
               entity.feature.properties.NAME +
-              '<br\> Address:' +
+              '<br\> <b>Address:</b>' +
               ' ' +
               entity.feature.properties.ADDRESS +
-              '<br\> Phone:' +
+              '<br\> <b>Phone:</b>' +
               ' ' +
               entity.feature.properties.PHONE +
-              '<br\> Website:' +
+              '<br\> <b>Website:</b>' +
               ' ' +
+              '<a href="' + entity.feature.properties.WEB_URL + '">' +
               entity.feature.properties.WEB_URL +
-              '<br\> Description:' +
+              '</a>' +
+              '<br\> <b>Description:</b>' +
               ' ' + entity.feature.properties.DESCRIPTION +
-              '<br\> Eligibility:' +
+              '<br\> <b>Eligibility:</b>' +
               ' ' + entity.feature.properties.ELIGIBILITY +
-              '<br\> Business Hours:' +
+              '<br\> <b>Business Hours:</b>' +
               ' ' + entity.feature.properties.BUSINESS_HOURS
             );
           });
@@ -353,23 +366,25 @@
           console.log('emergency', data.generalEmergencyAsssistance);
           map.featureLayer.eachLayer(function (entity) {
             entity.bindPopup(
-              'Name:' +
+              '<b>Name:</b>' +
               ' ' +
               entity.feature.properties.NAME +
-              '<br\> Address:' +
+              '<br\> <b>Address:</b>' +
               ' ' +
               entity.feature.properties.ADDRESS +
-              '<br\> Phone:' +
+              '<br\> <b>Phone:</b>' +
               ' ' +
               entity.feature.properties.PHONE +
-              '<br\> Website:' +
+              '<br\> <b>Website:</b>' +
               ' ' +
+              '<a href="' + entity.feature.properties.WEB_URL + '">' +
               entity.feature.properties.WEB_URL +
-              '<br\> Description:' +
+              '</a>' +
+              '<br\> <b>Description:</b>' +
               ' ' + entity.feature.properties.DESCRIPTION +
-              '<br\> Eligibility:' +
+              '<br\> <b>Eligibility:</b>' +
               ' ' + entity.feature.properties.ELIGIBILITY +
-              '<br\> Business Hours:' +
+              '<br\> <b>Business Hours:</b>' +
               ' ' + entity.feature.properties.BUSINESS_HOURS
             );
           });
@@ -385,23 +400,25 @@
           console.log('teen', data.teenYouthResources);
           map.featureLayer.eachLayer(function (entity) {
             entity.bindPopup(
-              'Name:' +
+              '<b>Name:</b>' +
               ' ' +
               entity.feature.properties.NAME +
-              '<br\> Address:' +
+              '<br\> <b>Address:</b>' +
               ' ' +
               entity.feature.properties.ADDRESS +
-              '<br\> Phone:' +
+              '<br\> <b>Phone:</b>' +
               ' ' +
               entity.feature.properties.PHONE +
-              '<br\> Website:' +
+              '<br\> <b>Website:</b>' +
               ' ' +
+              '<a href="' + entity.feature.properties.WEB_URL + '">' +
               entity.feature.properties.WEB_URL +
-              '<br\> Description:' +
+              '</a>' +
+              '<br\> <b>Description:</b>' +
               ' ' + entity.feature.properties.DESCRIPTION +
-              '<br\> Eligibility:' +
+              '<br\> <b>Eligibility:</b>' +
               ' ' + entity.feature.properties.ELIGIBILITY +
-              '<br\> Business Hours:' +
+              '<br\> <b>Business Hours:</b>' +
               ' ' + entity.feature.properties.BUSINESS_HOURS
             );
           });
@@ -417,23 +434,25 @@
           console.log('info', data.infoReferralLegal);
           map.featureLayer.eachLayer(function (entity) {
             entity.bindPopup(
-              'Name:' +
+              '<b>Name:</b>' +
               ' ' +
               entity.feature.properties.NAME +
-              '<br\> Address:' +
+              '<br\> <b>Address:</b>' +
               ' ' +
               entity.feature.properties.ADDRESS +
-              '<br\> Phone:' +
+              '<br\> <b>Phone:</b>' +
               ' ' +
               entity.feature.properties.PHONE +
-              '<br\> Website:' +
+              '<br\> <b>Website:</b>' +
               ' ' +
+              '<a href="' + entity.feature.properties.WEB_URL + '">' +
               entity.feature.properties.WEB_URL +
-              '<br\> Description:' +
+              '</a>' +
+              '<br\> <b>Description:</b>' +
               ' ' + entity.feature.properties.DESCRIPTION +
-              '<br\> Eligibility:' +
+              '<br\> <b>Eligibility:</b>' +
               ' ' + entity.feature.properties.ELIGIBILITY +
-              '<br\> Business Hours:' +
+              '<br\> <b>Business Hours:</b>' +
               ' ' + entity.feature.properties.BUSINESS_HOURS
             );
           });
@@ -446,26 +465,28 @@
         DcHumanService.getHumanServices()
         .then(function handleSuccess(data){
           map.featureLayer.setGeoJSON(data.irResources);
-          console.log('immigrant', data.irResources);
+          console.log('ir immigrant', data.irResources);
           map.featureLayer.eachLayer(function (entity) {
             entity.bindPopup(
-              'Name:' +
+              '<b>Name:</b>' +
               ' ' +
               entity.feature.properties.NAME +
-              '<br\> Address:' +
+              '<br\> <b>Address:</b>' +
               ' ' +
               entity.feature.properties.ADDRESS +
-              '<br\> Phone:' +
+              '<br\> <b>Phone:</b>' +
               ' ' +
               entity.feature.properties.PHONE +
-              '<br\> Website:' +
+              '<br\> <b>Website:</b>' +
               ' ' +
+              '<a href="' + entity.feature.properties.WEB_URL + '">' +
               entity.feature.properties.WEB_URL +
-              '<br\> Description:' +
+              '</a>' +
+              '<br\> <b>Description:</b>' +
               ' ' + entity.feature.properties.DESCRIPTION +
-              '<br\> Eligibility:' +
+              '<br\> <b>Eligibility:</b>' +
               ' ' + entity.feature.properties.ELIGIBILITY +
-              '<br\> Business Hours:' +
+              '<br\> <b>Business Hours:</b>' +
               ' ' + entity.feature.properties.BUSINESS_HOURS
             );
           });
@@ -478,26 +499,28 @@
         DcHumanService.getHumanServices()
         .then(function handleSuccess(data){
           map.featureLayer.setGeoJSON(data.dcFedResources);
-          console.log('teen', data.dcFedResources);
+          console.log('dcFed', data.dcFedResources);
           map.featureLayer.eachLayer(function (entity) {
             entity.bindPopup(
-              'Name:' +
+              '<b>Name:</b>' +
               ' ' +
               entity.feature.properties.NAME +
-              '<br\> Address:' +
+              '<br\> <b>Address:</b>' +
               ' ' +
               entity.feature.properties.ADDRESS +
-              '<br\> Phone:' +
+              '<br\> <b>Phone:</b>' +
               ' ' +
               entity.feature.properties.PHONE +
-              '<br\> Website:' +
+              '<br\> <b>Website:</b>' +
               ' ' +
+              '<a href="' + entity.feature.properties.WEB_URL + '">' +
               entity.feature.properties.WEB_URL +
-              '<br\> Description:' +
+              '</a>' +
+              '<br\> <b>Description:</b>' +
               ' ' + entity.feature.properties.DESCRIPTION +
-              '<br\> Eligibility:' +
+              '<br\> <b>Eligibility:</b>' +
               ' ' + entity.feature.properties.ELIGIBILITY +
-              '<br\> Business Hours:' +
+              '<br\> <b>Business Hours:</b>' +
               ' ' + entity.feature.properties.BUSINESS_HOURS
             );
           });

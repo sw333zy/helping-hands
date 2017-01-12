@@ -281,7 +281,7 @@
             });
             //Filtering for Immigrant and Refugees Resources
 
-            humanServicesData.irResources.features = response.data.features.filter(function filterIrResources(entity){
+            humanServicesData.irResources.features = response.data.features.filter(function filterirResources(entity){
               if (!entity.properties.KEYWORD) {
                 return false;
               }
@@ -324,9 +324,16 @@
 
 
             return humanServicesData;
+
         });
 
+
+
+
+
       }
+
+
   }
 
 }());

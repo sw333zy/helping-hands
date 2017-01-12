@@ -34,7 +34,7 @@
         var togglerBuild = toggler + 'Toggle';
         console.log('what are we toggling', togglerBuild, this[togglerBuild]);
         this[togglerBuild] = !this[togglerBuild];
-        console.log('after toggling, dcFedResourcesToggle is', this['dcFedResourcesToggle']);
+        console.log('after toggling, ', togglerBuild,' is', this[togglerBuild]);
       };
 
       //Getting data
