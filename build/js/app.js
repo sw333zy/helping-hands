@@ -4,17 +4,16 @@
   angular.module('helpingHands',['ui.router'])
     .config(routerConfig);
 
-  routerConfig.$inject = ['$stateProvider', '$urlRouterProvider', '$locationProvider'];
+  routerConfig.$inject = ['$stateProvider'];
 
-  function routerConfig($stateProvider, $urlRouterProvider, $locationProvider) {
-    $urlRouterProvider.when('','/');
-    $locationProvider.hashPrefix('');
+  function routerConfig($stateProvider) {
+
 
 
     $stateProvider
       .state({
         name: 'home',
-        url: '/',
+        url: '',
         templateUrl: 'views/home.template.html',
 
 
