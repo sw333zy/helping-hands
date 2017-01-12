@@ -9,27 +9,19 @@
     function MapViewController($stateParams, DcHumanService) {
 
 
-
-      //toggle filter for Shelter Resources
-      this.shelterToggle = false;
-      this.parentsToggle = false;
-      this.healthToggle = false;
-      this.fhgToggle = false;
-      this.adultEdToggle = false;
-      this.crisisToggle = false;
-      this.emergencyToggle = false;
-      this.teenToggle = false;
-      this.infoToggle = false;
-      this.irResourcesToggle = false;
-      this.dcFedResourcesToggle = false;
-
-
       this.toggle = function toggle(toggler) {
-        // if (toggler === 'shelters') {
-        //   this.shelterToggle = !this.shelterToggle;
-        // } else if (toggler === 'parents') {
-        //   this.parentsToggle = !this.parentsToggle;
-        // }
+
+        this.shelterToggle = false;
+        this.parentsToggle = false;
+        this.healthToggle = false;
+        this.fhgToggle = false;
+        this.adultEdToggle = false;
+        this.crisisToggle = false;
+        this.emergencyToggle = false;
+        this.teenToggle = false;
+        this.infoToggle = false;
+        this.irResourcesToggle = false;
+        this.dcFedResourcesToggle = false;
 
         var togglerBuild = toggler + 'Toggle';
         console.log('what are we toggling', togglerBuild, this[togglerBuild]);

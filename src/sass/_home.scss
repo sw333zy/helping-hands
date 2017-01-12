@@ -21,6 +21,8 @@
 .motto {
   h1 {
     color: $themeColor1;
+    padding-left: 3%;
+
   }
 
 }
@@ -33,6 +35,8 @@ i {
 .qoute {
   font-family: $themeFont2;
   font-size: $qouteSize;
+  padding-left: 3%;
+
 }
 
 .info {
@@ -90,4 +94,9 @@ i {
 
 .text-info {
   color: $brighterTextInfo;
+}
+
+h2 {
+  font-size: 4em;
+  padding-left: 45%;
 }

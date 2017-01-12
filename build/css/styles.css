@@ -1,30 +1,4 @@
 @import url("https://fonts.googleapis.com/css?family=Amatic+SC:700|Cedarville+Cursive");
-fieldset {
-  width: 500px; }
-
-legend {
-  font-size: 20px; }
-
-label.field {
-  text-align: right;
-  width: 100px;
-  float: left;
-  font-weight: bold; }
-
-input.textbox-300 {
-  width: 300px;
-  float: left; }
-
-fieldset p {
-  clear: both;
-  padding: 5px; }
-
-[ng-cloak] {
-  display: none; }
-
-.ng-invalid.ng-touched {
-  border: 1px solid red; }
-
 body {
   margin: 0;
   padding: 0; }
@@ -36,7 +10,9 @@ body {
 
 .toggle {
   position: absolute;
-  top: 380px; }
+  top: 380px;
+  padding: 3%;
+  list-style: none; }
 
 main {
   display: inline; }
@@ -59,15 +35,17 @@ main {
   font-size: 13em; }
 
 .motto h1 {
-  color: #ffffff; }
+  color: #ffffff;
+  padding-left: 3%; }
 
 i {
   color: #ffffff;
-  size: 5em; }
+  size: 6em; }
 
 .qoute {
   font-family: "Cedarville Cursive", cursive;
-  font-size: 2em; }
+  font-size: 2em;
+  padding-left: 3%; }
 
 .info {
   height: 720px; }
@@ -113,5 +91,9 @@ i {
 
 .text-info {
   color: #00bcd4; }
+
+h2 {
+  font-size: 4em;
+  padding-left: 45%; }
 
 /*# sourceMappingURL=styles.css.map */

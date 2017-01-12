@@ -129,7 +129,7 @@
         map.featureLayer.clearLayers(geojson);
       }
     });
-
+    //dc n fed resources
     scope.$watch('showdcFedResources', function toggledcFedResourcesLayer(newValue){
       console.log('toggled fed watch');
       var geojson = L.mapbox.tileLayer('mapbox.run-bike-hike');
